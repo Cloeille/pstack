@@ -37,13 +37,15 @@ Spawn all workers in one `delegate_task` call with multiple tasks. Each brief is
 - **Goal**: what this worker produces
 - **Scope/slice**: exactly what subset it covers (file list, module, endpoint)
 - **How to verify**: how the worker checks its own work
-- **Report format**: use `PASS / ISSUES / BLOCKED` with evidence (file paths, output, error messages)
+- **Report format**: use `PASS / ISSUES / BLOCKED` with evidence (file paths, output, error messages). A worker that can prove a defect reports `ISSUES` and lists every issue it can prove, not only the first.
+- **Exact targets**: when workers verify or measure commits, the brief names the exact SHAs. A measurement brief also names the method (sample count, what one sample is, order). The worker records both in its result.
 
 Workers must not depend on each other's output.
 
 ### C. Aggregate
 
-Read all results:
+Read all results. Drop a result that does not record the SHAs and method its brief names, and rerun that worker once. After a second miss, record a gap. A gap does not count as a pass.
+
 - **Partition**: every slice must have a result. Missing slice = gap, call it out.
 - **Race**: apply selection rule (most thorough, most critical, consensus).
 - Flag any `BLOCKED` workers — report what blocked them and whether it matters.

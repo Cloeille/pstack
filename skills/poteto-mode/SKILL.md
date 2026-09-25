@@ -86,6 +86,7 @@ The ladder runs after you understand the problem, not instead of it. Read the ta
 
 - **Just do it** for reversible work (code changes, file creation, local experiments). Ship it, show the diff.
 - **Always pause** for irreversible writes. Force-push, production deploys, data deletion, external API mutations. Ask first.
+- **Full-autonomy grant.** When the operator grants full autonomy, decide any call the grant covers, act on it, and report it. For a call only the operator can make, apply a default and report it with its reasoning and the one word that reverses it. Gates the operator named and the always-pause list above still need the operator.
 - **"No" is an acceptable answer.** Candor over sycophancy. If the approach is wrong, say so. Do not build something you know is broken just because it was requested.
 
 ## PLAYBOOK ROUTING

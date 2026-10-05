@@ -5,21 +5,21 @@ import re, sys
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS = {p.name for p in (ROOT / "skills").iterdir() if (p / "SKILL.md").is_file()}
-ALLOW = {"deslop"}  # ships separately from this plugin
 errors = []
 files = list(ROOT.rglob("*.md"))
 for path in files:
     text = path.read_text(encoding="utf-8")
-    for target in re.findall(r"\[[^]]*\]\(([^)]+)\)", text):
+    clean = re.sub(r"```.*?```", "", text, flags=re.S)
+    clean = re.sub(r"`[^`]*`", "", clean)
+    for target in re.findall(r"\[[^]]*\]\(([^)]+)\)", clean):
         target = target.split("#", 1)[0]
         if target and not re.match(r"(?:https?:|mailto:|#|<)", target):
-            if target in ("<name>.md", "url", "source URL", "../benchmark-checklist/SKILL.md"): continue
             if not (path.parent / target).resolve().exists():
                 errors.append(f"{path.relative_to(ROOT)}: broken link {target}")
-    for name in re.findall(r"pstack:([A-Za-z0-9_-]+)", text):
-        if name not in SKILLS and name not in ALLOW:
+    for name in re.findall(r"pstack:([A-Za-z0-9_-]+)", clean):
+        if name not in SKILLS:
             errors.append(f"{path.relative_to(ROOT)}: missing skill pstack:{name}")
-    for name in re.findall(r"file_path=['\"]playbooks/([^'\"]+)", text):
+    for name in re.findall(r"file_path=['\"]playbooks/([^'\"]+)", clean):
         if not (ROOT / "skills/poteto-mode/playbooks" / name).exists():
             errors.append(f"{path.relative_to(ROOT)}: missing playbook {name}")
     if path.is_relative_to(ROOT / "skills") or path.is_relative_to(ROOT / "docs"):

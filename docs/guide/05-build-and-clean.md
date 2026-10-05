@@ -1,6 +1,6 @@
 # Build the change and clean the diff
 
-> Originally by [poteto](https://github.com/poteto) for [Hermes Agent pstack](https://github.com/cursor/plugins/tree/main/pstack). Adapted for Hermes Agent.
+> Originally by [poteto](https://github.com/poteto) for [Cursor pstack](https://github.com/cursor/plugins/tree/main/pstack). Adapted for Hermes Agent.
 
 The build playbooks share one discipline. Say what you observed, let the playbook demand the evidence. This page shows what to put in the prompt for each common build task, then the cleanup habit that keeps diffs reviewable.
 

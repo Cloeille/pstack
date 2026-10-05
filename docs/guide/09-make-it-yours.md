@@ -1,6 +1,6 @@
 # Make it yours
 
-> Originally by [poteto](https://github.com/poteto) for [Hermes Agent pstack](https://github.com/cursor/plugins/tree/main/pstack). Adapted for Hermes Agent.
+> Originally by [poteto](https://github.com/poteto) for [Cursor pstack](https://github.com/cursor/plugins/tree/main/pstack). Adapted for Hermes Agent.
 
 poteto-mode is one person's style. The machinery underneath, playbooks, routing, model roles, works just as well wearing yours. This page covers generating a personal mode, capturing lessons from a session, authoring a focused skill, and testing a skill change before you trust it.
 

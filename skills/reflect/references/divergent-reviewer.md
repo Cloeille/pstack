@@ -20,7 +20,7 @@ Scan for:
 
 Findings must point to skills, tools, or MCPs invoked in this transcript. Speculative routings to skills the parent never opened do not count. To check whether a skill was used, scan the transcript for:
 
-- `Read` tool calls against any `SKILL.md` file (workspace `.cursor/skills/`, user-level `~/.cursor/skills/`, or plugin-installed paths under `~/.cursor/plugins/`)
+- `read_file` tool calls against any `SKILL.md` file (workspace `Hermes profile skills directory`, user-level `~/Hermes profile skills directory`, or plugin-installed paths under `Hermes plugin directory`)
 - `Task` prompts that name a skill path
 - Tool calls (Shell, Grep, MCP, etc.) that match a skill's documented commands
 

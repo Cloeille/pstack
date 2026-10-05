@@ -1,14 +1,13 @@
----
-name: setup-pstack
-description: 'Pick the model and reasoning budget pstack delegates use.'
+---name: setup-pstack
+description: "Pick the model and reasoning budget pstack delegates use."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
-    tags: [setup, configuration, models, delegation]
-    related_skills: [pstack:poteto-mode, pstack:swarm, pstack:interrogate]
+    tags: [engineering, workflow]
+    related_skills: []
 ---
 
 # Setup pstack

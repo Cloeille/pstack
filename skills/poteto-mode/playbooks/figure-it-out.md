@@ -5,11 +5,11 @@
 ## Steps
 
 1. **Frame the work.** Before writing code, answer three things in writing:
-   - **Definition of done** — a falsifiable predicate. "All 200 endpoints return valid OpenAPI responses" not "API is cleaned up."
-   - **Scope quantified** — how many files, modules, endpoints, records? Measure with `search_files` / `terminal`. Unknown scope = unknown timeline.
-   - **Rigor level** — what verification is required at each step? (Test suite, manual check, type-checker, linter, benchmark.)
+   - **Definition of done** - a falsifiable predicate. "All 200 endpoints return valid OpenAPI responses" not "API is cleaned up."
+   - **Scope quantified** - how many files, modules, endpoints, records? Measure with `search_files` / `terminal`. Unknown scope = unknown timeline.
+   - **Rigor level** - what verification is required at each step? (Test suite, manual check, type-checker, linter, benchmark.)
 
-2. **Design the workflow.** Decompose into atomic landable units — each one compiles, passes tests, and can ship independently.
+2. **Design the workflow.** Decompose into atomic landable units - each one compiles, passes tests, and can ship independently.
    - Order by **riskiest unknown first**. The thing most likely to invalidate the plan goes first; don't save it for last.
    - Build the **verification harness before the work**. If you need a test, a script, or a check to verify units, write it now. Working without a verifier is flying blind.
    - Use `pstack:architect` if the decomposition is non-obvious.
@@ -25,4 +25,4 @@
 
 ## Key Rule
 
-When no playbook fits, design one. Bias toward more rigor, not less — the cost of too much verification is minutes; the cost of too little is a rollback. Every unit lands clean or doesn't land.
+When no playbook fits, design one. Bias toward more rigor, not less - the cost of too much verification is minutes; the cost of too little is a rollback. Every unit lands clean or doesn't land.

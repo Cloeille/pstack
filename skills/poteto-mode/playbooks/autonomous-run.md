@@ -12,13 +12,13 @@
    - **Commit if it advanced.** Discard and try differently if it didn't.
    - Never make two unverified changes in a row.
 
-3. **Handle side discoveries.** Broken tests, related bugs, flaky verifiers — fix them yourself as they appear. Don't log them for later; they'll block the predicate if you ignore them. Keep fixes in separate commits.
+3. **Handle side discoveries.** Broken tests, related bugs, flaky verifiers - fix them yourself as they appear. Don't log them for later; they'll block the predicate if you ignore them. Keep fixes in separate commits.
 
-4. **Checkpoint every iteration.** After each commit, re-evaluate: how many units remain? Is the approach still converging? If you've made 3 iterations with no progress, step back and reassess the approach — don't keep grinding the same wall.
+4. **Checkpoint every iteration.** After each commit, re-evaluate: how many units remain? Is the approach still converging? If you've made 3 iterations with no progress, step back and reassess the approach - don't keep grinding the same wall.
 
 5. **Stop when the predicate is met.** Run the full check one final time. Report: what was done, how many iterations, what side-fixes were needed.
 
-**Plateau is not a stop.** If you're stuck, change approach — different decomposition, different order, ask `pstack:interrogate` to challenge your assumptions. Only stop for: predicate met, or a blocker that genuinely requires user input (credentials, ambiguous requirements, external service down).
+**Plateau is not a stop.** If you're stuck, change approach - different decomposition, different order, ask `pstack:interrogate` to challenge your assumptions. Only stop for: predicate met, or a blocker that genuinely requires user input (credentials, ambiguous requirements, external service down).
 
 ## Key Rule
 

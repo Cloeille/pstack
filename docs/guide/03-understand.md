@@ -1,6 +1,6 @@
 # Understand the code before changing it
 
-> Originally by [poteto](https://github.com/poteto) for [Cursor pstack](https://github.com/cursor/plugins/tree/main/pstack). Adapted for Hermes Agent.
+> Originally by [poteto](https://github.com/poteto) for [Hermes Agent pstack](https://github.com/cursor/plugins/tree/main/pstack). Adapted for Hermes Agent.
 
 Editing code you don't understand is how subtle regressions ship. pstack gives you four ways in. `pstack:how` explains what the code does now. `pstack:why` digs up the reasons it's shaped that way. `pstack:teach` blends both into one explanation. `pstack:recall` rebuilds your own recent context on a topic.
 

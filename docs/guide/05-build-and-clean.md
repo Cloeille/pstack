@@ -1,6 +1,6 @@
 # Build the change and clean the diff
 
-> Originally by [poteto](https://github.com/poteto) for [Cursor pstack](https://github.com/cursor/plugins/tree/main/pstack). Adapted for Hermes Agent.
+> Originally by [poteto](https://github.com/poteto) for [Hermes Agent pstack](https://github.com/cursor/plugins/tree/main/pstack). Adapted for Hermes Agent.
 
 The build playbooks share one discipline. Say what you observed, let the playbook demand the evidence. This page shows what to put in the prompt for each common build task, then the cleanup habit that keeps diffs reviewable.
 
@@ -50,7 +50,7 @@ In context, that's enough. [`pstack:tdd`](../../skills/tdd/SKILL.md) writes the 
 
 ## Clean before you commit
 
-The [Opening a PR playbook](../../skills/poteto-mode/playbooks/opening-a-pr.md) runs `pstack:deslop` on the diff before each commit and applies [`pstack:unslop`](../../skills/unslop/SKILL.md) to the PR description and commit bodies. `pstack:deslop` ships separately from pstack. If you don't have it, ask for the same outcome in plain words: remove narrating comments, unsupported guards, dead compatibility paths, and unrelated edits.
+The [Opening a PR playbook](../../skills/poteto-mode/playbooks/opening-a-pr.md) runs `deslop` on the diff before each commit and applies [`pstack:unslop`](../../skills/unslop/SKILL.md) to the PR description and commit bodies. `deslop` ships separately from pstack. If you don't have it, ask for the same outcome in plain words: remove narrating comments, unsupported guards, dead compatibility paths, and unrelated edits.
 
 For prose, `pstack:unslop` takes a target and any extra rules you have:
 
@@ -68,9 +68,9 @@ Comments need their own pass, and not from the agent that wrote them. An author 
 load pstack:no-comments the diff
 ```
 
-[`pstack:no-comments`](../../skills/no-comments/SKILL.md) spawns [Comment Sicko](../../agents/comment-sicko.md), a read-only reviewer with a short keep list: license headers, doc comments on a public API, links that explain what code can't, behavior forced by an external dependency you can't reshape. Everything else goes. A surprise in your own code gets no such pass. The comment comes back as a refactor flag, and `pstack:no-comments` fixes the flags it accepts at the root cause. When a comment claims a constraint, "do not remove", the skill offers to encode the claim as a type, test, or lint. Either way, the comment comes out.
+[`pstack:no-comments`](../../skills/no-comments/SKILL.md) spawns [Comment Sicko](../../skills/no-comments/references/comment-sicko.md), a read-only reviewer with a short keep list: license headers, doc comments on a public API, links that explain what code can't, behavior forced by an external dependency you can't reshape. Everything else goes. A surprise in your own code gets no such pass. The comment comes back as a refactor flag, and `pstack:no-comments` fixes the flags it accepts at the root cause. When a comment claims a constraint, "do not remove", the skill offers to encode the claim as a type, test, or lint. Either way, the comment comes out.
 
-The division of labor is worth keeping straight. `pstack:deslop` cleans slop out of the code, `pstack:unslop` cleans it out of prose, and `pstack:no-comments` hands the comments to a reviewer who didn't write them.
+The division of labor is worth keeping straight. `deslop` cleans slop out of the code, `pstack:unslop` cleans it out of prose, and `pstack:no-comments` hands the comments to a reviewer who didn't write them.
 
 **Pitfall:** cleanup is not optional polish. A diff with narrating comments and defensive dead weight reads as unfinished to reviewers, and the extra code is where the next bug hides. If the diff feels padded, say `deslop it` before you commit, not after review calls it out.
 

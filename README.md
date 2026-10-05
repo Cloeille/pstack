@@ -2,7 +2,7 @@
 
 Poteto's engineering rigor stack, adapted for [Hermes Agent](https://hermes-agent.nousresearch.com).
 
-Fork of [pstack](https://github.com/cursor/plugins/tree/main/pstack) by poteto (Meta/Netflix/Hermes Agent, React core team). Originally built as a Hermes Agent plugin, rebuilt here as a Hermes plugin with native skills, delegate_task orchestration, and playbook routing.
+Fork of [pstack](https://github.com/cursor/plugins/tree/main/pstack) by poteto (Meta/Netflix, React core team). Originally built as a Cursor plugin, adapted here for Hermes Agent with native skills, delegate_task orchestration, and playbook routing.
 
 ## What it does
 

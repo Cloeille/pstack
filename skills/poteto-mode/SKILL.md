@@ -1,14 +1,13 @@
----
-name: poteto-mode
-description: "Engineering rigor orchestrator with playbooks and principles."
+---name: poteto-mode
+description: "Engineering rigor orchestrator with playbooks and."
 version: 0.1.0
-author: poteto (Hermes adaptation by Madeleine)
+author: poteto (Hermes adaptation)
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
-    tags: [engineering, orchestrator, principles, playbooks, workflow]
-    related_skills: [pstack:how, pstack:architect, pstack:swarm, pstack:interrogate, pstack:unslop]
+    tags: [engineering, workflow]
+    related_skills: []
 ---
 
 # poteto-mode

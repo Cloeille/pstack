@@ -1,14 +1,13 @@
----
-name: swarm
-description: 'Fan out parallel workers via delegate_task, drain, report.'
+---name: swarm
+description: "Fan out parallel workers via delegate_task, drain, report."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
-    tags: [parallel, delegation, coordination, automation]
-    related_skills: [pstack:interrogate, pstack:architect, pstack:how]
+    tags: [engineering, workflow]
+    related_skills: []
 ---
 
 # Swarm
@@ -23,12 +22,12 @@ When a task decomposes into independent slices that can run concurrently: review
 
 ### A. Frame
 
-1. **Done predicate** — state what "complete" means before spawning anything.
-2. **Shape** — pick one:
+1. **Done predicate** - state what "complete" means before spawning anything.
+2. **Shape** - pick one:
    - **Partition**: each worker covers a distinct slice (files, modules, endpoints). No overlap.
    - **Race**: all workers cover the same brief independently. Pick the best result.
    - **Mix**: some workers partition, some race. Use when part of the work benefits from redundancy.
-3. **Set N** — number of workers. Match to the number of slices (partition) or desired redundancy (race).
+3. **Set N** - number of workers. Match to the number of slices (partition) or desired redundancy (race).
 
 ### B. Fan Out
 
@@ -48,7 +47,7 @@ Read all results. Drop a result that does not record the SHAs and method its bri
 
 - **Partition**: every slice must have a result. Missing slice = gap, call it out.
 - **Race**: apply selection rule (most thorough, most critical, consensus).
-- Flag any `BLOCKED` workers — report what blocked them and whether it matters.
+- Flag any `BLOCKED` workers - report what blocked them and whether it matters.
 
 ### D. Report
 

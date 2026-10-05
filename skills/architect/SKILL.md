@@ -39,6 +39,16 @@ Each candidate produces, in this order:
 
 Compare candidates on **interface depth**: how much does a caller need to know to use it correctly? Prefer the design that hides more complexity behind a simpler public surface.
 
+Assume the next contributor is an agent that sees only the files it opened, copies the nearest example, and takes the shortest path that compiles. Reject candidates with these red flags:
+
+- **Split ownership.** More than one module writes the same state. Give each piece of state one owner.
+- **Two ways to do one task.** Keep one way, move callers off the others, delete them in the same change.
+- **Importable internals.** Make internals unreachable from outside the module so an outside import fails the build.
+- **Hand-synced list.** Keep one list and derive the others, or make the build fail when they disagree.
+- **Shallow modules and pass-through methods.** A layer that forwards the same arguments without hiding complexity. Remove it.
+
+Prefer the design where a change that looks right from one file is right for the whole repo.
+
 ### C. Agree (Optional)
 
 If the user wants input, present a synthesized comparison:

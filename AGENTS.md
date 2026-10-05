@@ -6,7 +6,7 @@ Hermes Agent plugin. No build, no deps, no tests. Pure markdown skills + a tiny 
 
 ```
 plugin.yaml          # name, version, description
-__init__.py          # register(ctx) — registers 6 skills, nothing else
+__init__.py          # register(ctx) — registers 7 skills, nothing else
 skills/
   poteto-mode/       # orchestrator — routes tasks to playbooks
     SKILL.md
@@ -16,6 +16,7 @@ skills/
   interrogate/SKILL.md # adversarial multi-reviewer
   swarm/SKILL.md     # parallel fan-out
   unslop/SKILL.md    # strip AI writing patterns
+  setup-pstack/SKILL.md # pick delegate model + reasoning budget
 ```
 
 ## Editing rules

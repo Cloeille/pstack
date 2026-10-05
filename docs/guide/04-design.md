@@ -36,7 +36,7 @@ flowchart LR
     H --> I[Verify]
 ```
 
-The panel comes from your [`pstack:setup-pstack`](../../skills/setup-pstack/SKILL.md) configuration, and you can adjust it per task.
+The runners use the delegate model set by [`pstack:setup-pstack`](../../skills/setup-pstack/SKILL.md). Change `delegation.model` between runs if you want different models in the panel.
 
 ## Cover slices and races with `pstack:swarm`
 

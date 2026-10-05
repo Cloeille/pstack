@@ -16,6 +16,7 @@ One orchestrator skill (`poteto-mode`) that routes tasks to playbooks and enforc
 | `pstack:interrogate` | Multi-reviewer adversarial code review via parallel delegates. |
 | `pstack:swarm` | Fan out N parallel workers, drain, report. |
 | `pstack:unslop` | Strip AI writing patterns. Apply to all prose. |
+| `pstack:setup-pstack` | Pick the model and reasoning budget delegates use. Writes Hermes `delegation` config. |
 
 ## Playbooks
 
@@ -62,6 +63,7 @@ Then in any chat session:
 | `/interrogate` | Adversarial multi-reviewer code review. |
 | `/swarm` | Fan out parallel workers. |
 | `/unslop` | Strip AI writing patterns from prose. |
+| `/setup-pstack` | Pick the delegate model and reasoning budget. |
 
 Append an instruction after the command: `/how how does auth work in this repo`
 

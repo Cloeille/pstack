@@ -1,19 +1,19 @@
 ---
 name: deslop
-description: Remove AI-generated code slop.
+description: Remove AI-generated code slop from a diff before committing.
 version: 1.0.0
-author: poteto (original Cursor plugin)
+author: cursor-team-kit (Cursor), ported for Hermes
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [cleanup, code quality]
-    related_skills: [unslop]
+    related_skills: [pstack:unslop]
 ---
 
 # Remove AI code slop
 
-Check the diff against main and remove AI-generated slop introduced in the branch.
+Check the diff against main and remove AI-generated slop introduced in the branch. Get the diff with `terminal` (`git diff main...HEAD`), make the edits with `patch`.
 
 ## Focus Areas
 
@@ -28,3 +28,5 @@ Check the diff against main and remove AI-generated slop introduced in the branc
 - Keep behavior unchanged unless fixing a clear bug.
 - Prefer minimal, focused edits over broad rewrites.
 - Keep the final summary concise (1-3 sentences).
+
+`pstack:unslop` does the same job for prose. This skill is for code.

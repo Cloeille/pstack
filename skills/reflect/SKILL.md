@@ -22,33 +22,25 @@ Invoke when the user says "reflect" or "/reflect". Skip when the conversation is
 
 ### 1. Locate the active transcript
 
-The parent finds its own transcript file before fanning out. The system prompt names the active workspace's `Hermes session history/` directory. Use that path. Do not glob across `~/.cursor/projects/*/`. That crosses workspace boundaries and reads private chats from unrelated projects.
-
-```bash
-ls -t <Hermes session history>/*.jsonl <Hermes session history>/*/*.jsonl <Hermes session history>/*/subagents/*.jsonl 2>/dev/null | head -10
-```
-
-Three transcript layouts: legacy flat (`<id>.jsonl`), current nested (`<id>/<id>.jsonl`), and subagent (`<parent>/subagents/<child>.jsonl`).
-
-For each candidate, read the first JSONL line and check that `message.content[0].text` contains the conversation's opening user prompt. Take the matching path. If no path resolves, write a tight digest of the session and pass that instead.
+The parent finds its own conversation with the `session_search` tool, scoped to the current session (`session_id` from the system prompt, read with `around_message_id` to pull the full range). Never glob raw transcript files or reach into another profile's session history. If the lookup fails to resolve, write a tight digest of the session and pass that instead.
 
 ### 2. Spawn three reviewers in parallel
 
-One message, three `Task` calls, `toolsets: generalPurpose`, with `model` set as below, agent mode (`readonly: false`). Reviewers need MCP access for context lookups (tickets, chat threads, observability traces referenced in the transcript). Readonly strips MCPs.
+One `delegate_task` call with three tasks, agent mode (not read-only: reviewers need MCP access for context lookups such as tickets, chat threads, or observability traces referenced in the transcript. Read-only strips MCPs).
 
-Each reviewer and the synthesizer name a role line in the `Hermes delegation configuration` rule and a default. Set `model` to that line's value, or to the default if the rule or the line is missing. Leave `model` unset when the value is `auto` or `inherit-parent`. If the delegate_task rejects a slug, use the default and say so. If it rejects the default, use the closest valid slug of the same family from its error message.
+| Lens | Prompt template |
+|---|---|
+| Judgment | `references/judgment-reviewer.md` |
+| Tooling | `references/tooling-reviewer.md` |
+| Divergent | `references/divergent-reviewer.md` |
 
-| Lens | Role line | Default `model` | Prompt template |
-|---|---|---|---|
-| Judgment | `reflect judgment, divergent, synthesizer` | `claude-opus-5-5-max` | `references/judgment-reviewer.md` |
-| Tooling | `reflect tooling` | `gpt-5.6-sol-max` | `references/tooling-reviewer.md` |
-| Divergent | `reflect judgment, divergent, synthesizer` | `claude-opus-5-5-max` | `references/divergent-reviewer.md` |
+Every task in one `delegate_task` call runs on the Hermes-configured `delegation.model` (set by `pstack:setup-pstack`). There is no per-task model override, so the three lenses get their diversity from the prompt, not the model. For genuine model diversity, run the three lenses as three separate rounds, changing `delegation.model` between rounds.
 
-Pass each template verbatim, substituting the transcript path or digest where marked. Reviewers return findings in the `Task` response body.
+Pass each template verbatim, substituting the transcript content or digest where marked. Reviewers return findings in their task result.
 
 ### 3. Synthesize
 
-One `Task` call, `toolsets: generalPurpose`, with `model` from the `reflect judgment, divergent, synthesizer` line (default `claude-opus-5-5-max`), agent mode (`readonly: false`). The synthesizer's quality check includes spot-verifying citations, which can require MCP access. Readonly strips MCPs. Use `references/synthesizer.md` verbatim, with each reviewer's full output inlined where marked. The synthesizer returns a structured Accepted / Rejected / Backlog list.
+One `delegate_task` call, agent mode (not read-only: the synthesizer's quality check spot-verifies citations, which can require MCP access). It runs on the same `delegation.model` as the reviewers unless you deliberately changed it between rounds. Use `references/synthesizer.md` verbatim, with each reviewer's full output inlined where marked. The synthesizer returns a structured Accepted / Rejected / Backlog list.
 
 ### 4. Structural enforcement check
 

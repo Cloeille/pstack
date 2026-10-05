@@ -6,17 +6,22 @@ Fork of [pstack](https://github.com/cursor/plugins/tree/main/pstack) by poteto (
 
 ## What it does
 
-One orchestrator skill (`poteto-mode`) that routes tasks to playbooks and enforces principles. Five satellite skills for specific capabilities.
+One orchestrator skill (`poteto-mode`) routes tasks to playbooks. Supporting skills cover exploration, design, review, delegation, cleanup, memory, teaching, verification, and workflow.
 
 | Skill | Purpose |
 |-------|---------|
-| `pstack:poteto-mode` | Orchestrator. Task → playbook routing, principles, autonomy rules, delegation patterns. |
-| `pstack:how` | Codebase exploration. "How does X work?" with explain/critique modes. |
-| `pstack:architect` | Design types and module boundaries before implementing. "Design it twice." |
-| `pstack:interrogate` | Multi-reviewer adversarial code review via parallel delegates. |
-| `pstack:swarm` | Fan out N parallel workers, drain, report. |
-| `pstack:unslop` | Strip AI writing patterns. Apply to all prose. |
-| `pstack:setup-pstack` | Pick the model and reasoning budget delegates use. Writes Hermes `delegation` config. |
+| `pstack:poteto-mode` | Orchestrator and playbook routing. |
+| `pstack:how` | Codebase exploration. |
+| `pstack:architect` | Design types and module boundaries. |
+| `pstack:interrogate` | Adversarial multi-reviewer review. |
+| `pstack:swarm` | Parallel workers and aggregation. |
+| `pstack:unslop` | Clean AI writing patterns from prose. |
+| `pstack:deslop` | Clean AI code slop from diffs. |
+| `pstack:setup-pstack` | Configure the delegate model and reasoning budget. |
+| `pstack:automate-me`, `pstack:recall`, `pstack:reflect`, `pstack:show-me-your-work`, `pstack:why` | Personalization, history, reflection, evidence, and intent. |
+| `pstack:benchmark-checklist`, `pstack:blast-radius`, `pstack:bro`, `pstack:create-verification-skill`, `pstack:figure-it-out`, `pstack:maintain-verification-skill`, `pstack:no-comments`, `pstack:tdd`, `pstack:teach`, `pstack:technical-writing`, `pstack:typescript-best-practices` | Focused engineering workflows. |
+| `principle-*` (20 skills) | Engineering principles used by the orchestrator. |
+
 
 ## Playbooks
 

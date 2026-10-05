@@ -24,7 +24,7 @@ skills/
 - **SKILL.md frontmatter** must have: `name`, `description` (≤60 chars, one sentence, period at end), `version`, `author`, `license`, `platforms`, `metadata.hermes.tags`, `metadata.hermes.related_skills`.
 - **Cross-references** between skills use `pstack:<name>` (e.g. `pstack:how`, `pstack:architect`).
 - **Playbook references** use `skill_view(name='pstack:poteto-mode', file_path='playbooks/<name>.md')`.
-- **Hermes tools** to reference: `terminal`, `search_files`, `read_file`, `write_file`, `patch`, `delegate_task`, `web_search`, `web_extract`, `browser_navigate`. No Hermes Agent-specific tools (Task, cronjob, toolsets, etc.).
+- **Hermes tools** to reference: `terminal`, `search_files`, `read_file`, `write_file`, `patch`, `delegate_task`, `web_search`, `web_extract`, `browser_navigate`. Use `delegate_task` for subagents, `session_search` for session history, and `cronjob` for scheduled runs.
 - **No em dashes** in any prose. Use periods or commas. This is an unslop rule that applies to the project itself.
 
 ## Adding a skill
@@ -32,6 +32,7 @@ skills/
 1. Create `skills/<name>/SKILL.md` with proper frontmatter.
 2. The loader discovers every directory containing `SKILL.md` automatically.
 3. Run `python3 scripts/check_refs.py` before every commit.
+4. CI runs the checker on every push and pull request.
 
 ## Adding a playbook
 
@@ -47,4 +48,4 @@ skills/
 
 ## Origin
 
-Adapted from [poteto's pstack](https://github.com/cursor/plugins/tree/main/pstack) for Hermes Agent. The original is a Hermes Agent plugin. This version replaces Hermes Agent's Task tool with `delegate_task`, removes cloud/worktree assumptions, and reformats everything as Hermes SKILL.md files.
+Adapted from [poteto's pstack](https://github.com/cursor/plugins/tree/main/pstack) for Hermes Agent. The original is a Cursor plugin. This version replaces Cursor's task orchestration with `delegate_task`, removes cloud/worktree assumptions, and reformats everything as Hermes SKILL.md files.

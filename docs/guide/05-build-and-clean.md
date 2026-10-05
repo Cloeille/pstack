@@ -50,7 +50,7 @@ In context, that's enough. [`pstack:tdd`](../../skills/tdd/SKILL.md) writes the 
 
 ## Clean before you commit
 
-The [Opening a PR playbook](../../skills/poteto-mode/playbooks/opening-a-pr.md) runs `deslop` on the diff before each commit and applies [`pstack:unslop`](../../skills/unslop/SKILL.md) to the PR description and commit bodies. `deslop` ships separately from pstack. If you don't have it, ask for the same outcome in plain words: remove narrating comments, unsupported guards, dead compatibility paths, and unrelated edits.
+The [Opening a PR playbook](../../skills/poteto-mode/playbooks/opening-a-pr.md) runs [`pstack:deslop`](../../skills/deslop/SKILL.md) on the diff before each commit and applies [`pstack:unslop`](../../skills/unslop/SKILL.md) to the PR description and commit bodies.
 
 For prose, `pstack:unslop` takes a target and any extra rules you have:
 
@@ -70,8 +70,8 @@ load pstack:no-comments the diff
 
 [`pstack:no-comments`](../../skills/no-comments/SKILL.md) spawns [Comment Sicko](../../skills/no-comments/references/comment-sicko.md), a read-only reviewer with a short keep list: license headers, doc comments on a public API, links that explain what code can't, behavior forced by an external dependency you can't reshape. Everything else goes. A surprise in your own code gets no such pass. The comment comes back as a refactor flag, and `pstack:no-comments` fixes the flags it accepts at the root cause. When a comment claims a constraint, "do not remove", the skill offers to encode the claim as a type, test, or lint. Either way, the comment comes out.
 
-The division of labor is worth keeping straight. `deslop` cleans slop out of the code, `pstack:unslop` cleans it out of prose, and `pstack:no-comments` hands the comments to a reviewer who didn't write them.
+The division of labor is worth keeping straight. `pstack:deslop` cleans slop out of the code, `pstack:unslop` cleans it out of prose, and `pstack:no-comments` hands the comments to a reviewer who didn't write them.
 
-**Pitfall:** cleanup is not optional polish. A diff with narrating comments and defensive dead weight reads as unfinished to reviewers, and the extra code is where the next bug hides. If the diff feels padded, say `deslop it` before you commit, not after review calls it out.
+**Pitfall:** cleanup is not optional polish. A diff with narrating comments and defensive dead weight reads as unfinished to reviewers, and the extra code is where the next bug hides. If the diff feels padded, say `pstack:deslop it` before you commit, not after review calls it out.
 
 Next: [Verify and ship](./06-verify-and-ship.md).

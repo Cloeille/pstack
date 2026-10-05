@@ -16,7 +16,7 @@ Investigate the motivation and intent behind code.
 
 Companion to the `how` skill. `how` answers what the code does and how it works. `why` answers what forces led to its shape.
 
-Each spawn below names a role line in the `Hermes delegation configuration` rule and a default. Set `model` to that line's value, or to the default if the rule or the line is missing. Leave `model` unset when the value is `auto` or `inherit-parent`. If the delegate_task rejects a slug, use the default and say so. If it rejects the default, use the closest valid slug of the same family from its error message.
+Every investigator and the synthesizer below run on the Hermes-configured `delegation.model` (set by `pstack:setup-pstack`). `delegate_task` has no per-task model override, so model diversity is not available within one round.
 
 ## Operating Posture
 
@@ -87,8 +87,7 @@ Launch all matching investigators in a single message so they run concurrently. 
 
 Subagent config (each):
 - `toolsets`: `generalPurpose`
-- `model`: the `why investigators` line, default `grok-4.7-xhigh-fast`
-- `readonly`: `false` (agent mode). **Do not use readonly/Ask mode.** It strips MCP access, which disables MCP-backed investigators entirely. Investigators still shouldn't write anything.
+- agent mode, not read-only. **Do not use read-only mode.** It strips MCP access, which disables MCP-backed investigators entirely. Investigators still shouldn't write anything.
 
 Each investigator gets:
 1. The base prompt from `references/investigator-prompt.md`
@@ -131,8 +130,7 @@ If your scope assessment suggests a single-commit trivial target where the PR de
 Spawn one synthesizer subagent:
 
 - `toolsets`: `generalPurpose`
-- `model`: the `why synthesizer` line, default `claude-opus-5-5-max`
-- `readonly`: `false` (agent mode). The synthesizer's quality check spot-verifies citations, which can require MCP access. Readonly/Ask mode strips MCPs and defeats that.
+- agent mode, not read-only. The synthesizer's quality check spot-verifies citations, which can require MCP access. Read-only mode strips MCPs and defeats that.
 
 The synthesizer gets:
 1. The investigator findings, including any null results and any categories skipped with justification

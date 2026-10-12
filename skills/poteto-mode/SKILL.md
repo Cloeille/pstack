@@ -122,7 +122,7 @@ Mark deliberate simplifications that cut a real corner with `ponytail:` comments
 
 ## DELEGATION
 
-Use Hermes `delegate_task` for code-writing subagents. Rules:
+Use Hermes `delegate_task` for code-writing subagents. The session that loads `pstack:poteto-mode` runs the playbook itself. Never delegate the playbook run to a subagent. Rules:
 
 1. **Fan out independent slices in parallel.** Multiple tasks in one delegate_task call for work that does not depend on each other.
 2. **Review every subagent's diff yourself.** You own it. A subagent is a tool, not an authority.

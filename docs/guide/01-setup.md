@@ -34,6 +34,17 @@ At the end of setup, `pstack:setup-pstack` checks whether your project has a way
 
 After setup, start a new chat. The model configuration applies to new sessions.
 
+If you're new to pstack, say yes. An agent that can check its own work keeps going until the check passes. An agent that can't hands every result back to you to check by hand. Of everything in this guide, the verification skill pays off the most.
+
+## Keep the cost in check
+
+pstack spends extra tokens on subagents and review panels. That's the price of the rigor. To spend fewer:
+
+- Rerun `pstack:setup-pstack` and pick a smaller reasoning budget or cheaper models. A strong model in the main chat with cheaper, faster models in the code roles is a good split.
+- Let a role inherit the parent model so it runs on the chat's own model.
+- Shorten a panel list. Each entry runs one delegate.
+- Save `pstack:poteto-mode` for work that needs rigor. A small, obvious edit doesn't.
+
 ## Run your first task
 
 Pick something real but small, and describe it the way you'd describe it to a colleague:

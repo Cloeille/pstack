@@ -10,7 +10,7 @@ __init__.py          # register(ctx), auto-registers every skill directory
 skills/
   poteto-mode/       # orchestrator - routes tasks to playbooks
     SKILL.md
-    playbooks/*.md   # 7 step-by-step procedures
+    playbooks/*.md   # 17 step-by-step procedures
   how/SKILL.md       # codebase exploration
   architect/SKILL.md # design before code
   interrogate/SKILL.md # adversarial multi-reviewer
@@ -43,7 +43,7 @@ skills/
 
 - Don't add Python logic beyond the loader. Skills are markdown.
 - Don't add hooks or tools in `__init__.py`. This plugin registers skills only.
-- Don't reference Hermes Agent-specific features (worktrees, cronjob, cloud environment, sticky mode).
+- Don't reference Cursor-specific features (worktrees, /loop, cloud environment, sticky mode).
 - Don't write promotional or padded prose. Run unslop on yourself.
 
 ## Origin

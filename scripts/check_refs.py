@@ -1,12 +1,26 @@
 #!/usr/bin/env python3
 """Reject broken markdown links, skill references, playbook references, Cursor leftovers, and prose drift."""
 from pathlib import Path
-import re, sys
+import importlib.util, re, sys
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS = {p.name for p in (ROOT / "skills").iterdir() if (p / "SKILL.md").is_file()}
 errors = []
 files = list(ROOT.rglob("*.md"))
+
+class Ctx:
+    registered = []
+    def register_skill(self, name, path): self.registered.append((name, Path(path)))
+
+spec = importlib.util.spec_from_file_location("pstack_init", ROOT / "__init__.py")
+loader = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(loader)
+loader.register(ctx := Ctx())
+for name, path in ctx.registered:
+    if path.name != "SKILL.md" or not path.is_file():
+        errors.append(f"__init__.py: {name} registered with {path}, not a SKILL.md file")
+if {n for n, _ in ctx.registered} != SKILLS:
+    errors.append("__init__.py: registered skills differ from skills/ directories")
 
 CURSOR_LEFTOVERS = re.compile(
     r"\.cursor/|~/\.cursor|pstack-models\.mdc|AskQuestion|subagent_type"

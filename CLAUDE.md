@@ -26,13 +26,15 @@ skills/
 - **Playbook references** use `skill_view(name='pstack:poteto-mode', file_path='playbooks/<name>.md')`.
 - **Hermes tools** to reference: `terminal`, `search_files`, `read_file`, `write_file`, `patch`, `delegate_task`, `web_search`, `web_extract`, `browser_navigate`. Use `delegate_task` for subagents, `session_search` for session history, and `cronjob` for scheduled runs.
 - **No em dashes** in any prose. Use periods or commas. This is an unslop rule that applies to the project itself.
+- **Every PR bumps `version` in `plugin.yaml`** (semver: patch for fixes and wording, minor for new skills or playbooks, major for breaking renames). Hermes only updates installed plugins when the version increases. CI runs `scripts/check_version.py` and fails the PR otherwise.
 
 ## Adding a skill
 
 1. Create `skills/<name>/SKILL.md` with proper frontmatter.
 2. The loader discovers every directory containing `SKILL.md` automatically.
 3. Run `python3 scripts/check_refs.py` before every commit.
-4. CI runs the checker on every push and pull request.
+4. Bump `version` in `plugin.yaml` (minor for a new skill).
+5. CI runs the reference checker on every push and pull request, and the version checker on every pull request.
 
 ## Adding a playbook
 

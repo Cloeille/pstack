@@ -1,14 +1,13 @@
----
-name: architect
-description: 'Design types and module structure before writing code.'
+---name: architect
+description: "Design types and module structure before writing code."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
-    tags: [design, architecture, types, planning]
-    related_skills: [pstack:how, pstack:interrogate, pstack:swarm]
+    tags: [engineering, workflow]
+    related_skills: []
 ---
 
 # Architect
@@ -27,15 +26,15 @@ Run `pstack:how` over relevant existing subsystems. Understand what's already th
 
 ### B. Sketch
 
-Delegate 2+ structurally distinct design candidates via `delegate_task`. "Structurally distinct" means different module boundaries, different type hierarchies, or different data flow — not just naming variations.
+Delegate 2+ structurally distinct design candidates via `delegate_task`. "Structurally distinct" means different module boundaries, different type hierarchies, or different data flow - not just naming variations.
 
 Each candidate produces, in this order:
 
-1. **Caller's usage first** — show how consuming code calls the new API. This is the design. Everything else serves it.
-2. **Type sketch** — the types/interfaces needed, with fields and key methods. Pseudocode is fine.
-3. **Function signatures** — public API with input/output types and brief behavior notes.
-4. **Module map** — which files hold what, and dependency direction between them.
-5. **Rationale** — why this shape, what tradeoff it makes, what it optimizes for.
+1. **Caller's usage first** - show how consuming code calls the new API. This is the design. Everything else serves it.
+2. **Type sketch** - the types/interfaces needed, with fields and key methods. Pseudocode is fine.
+3. **Function signatures** - public API with input/output types and brief behavior notes.
+4. **Module map** - which files hold what, and dependency direction between them.
+5. **Rationale** - why this shape, what tradeoff it makes, what it optimizes for.
 
 Compare candidates on **interface depth**: how much does a caller need to know to use it correctly? Prefer the design that hides more complexity behind a simpler public surface.
 
@@ -58,11 +57,11 @@ If the user wants input, present a synthesized comparison:
 
 ### D. Implement
 
-Delegate code-writing against the chosen sketch via `delegate_task`. The sketch is the spec — implementation should match the types and signatures, not reinvent them.
+Delegate code-writing against the chosen sketch via `delegate_task`. The sketch is the spec - implementation should match the types and signatures, not reinvent them.
 
 ### E. Scrap
 
-If implementation reveals the sketch was wrong (types don't compose, edge case breaks the model, performance requires different structure), go back to phase B. Redesign with the new information. Sunk cost on the sketch is zero — that's the point of sketching.
+If implementation reveals the sketch was wrong (types don't compose, edge case breaks the model, performance requires different structure), go back to phase B. Redesign with the new information. Sunk cost on the sketch is zero - that's the point of sketching.
 
 ## Key Rules
 

@@ -1,19 +1,18 @@
----
-name: interrogate
-description: 'Multi-model adversarial code review via parallel delegates.'
+---name: interrogate
+description: "Multi-model adversarial code review via parallel."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
-    tags: [code-review, quality, adversarial, testing]
-    related_skills: [pstack:how, pstack:architect, pstack:swarm]
+    tags: [engineering, workflow]
+    related_skills: []
 ---
 
 # Interrogate
 
-Spawn multiple `delegate_task` subagents to adversarially review code changes. Adversarial signal comes from model diversity — independent reviewers finding the same issue means high confidence.
+Spawn multiple `delegate_task` subagents to adversarially review code changes. Adversarial signal comes from model diversity - independent reviewers finding the same issue means high confidence.
 
 ## When to Use
 
@@ -36,7 +35,7 @@ Write one sentence: what does this code change try to accomplish? This anchors e
 
 ### 3. Spawn Reviewers
 
-Launch at least 2–3 parallel reviewers via `delegate_task`. Each gets the same prompt:
+Launch at least 2-3 parallel reviewers via `delegate_task`. Each gets the same prompt:
 
 ```
 Review this code change.

@@ -6,7 +6,7 @@
 
 1. **Understand the subsystem.** Run `pstack:how` over every module the feature touches. Don't design until you know what's already there.
 
-2. **Design exploration.** Run `pstack:architect` — explore approaches, pick one, document why. Output: a short design doc with the chosen approach and its trade-offs.
+2. **Design exploration.** Run `pstack:architect` - explore approaches, pick one, document why. Output: a short design doc with the chosen approach and its trade-offs.
 
 3. **Throughput checkpoint.** Before delegating, answer in writing:
    - What are the blocking first steps (must happen before anything else)?
@@ -18,11 +18,11 @@
 
 5. **Review every diff.** Read what came back with `read_file`. Check: does it match the design? Does it introduce unrequested abstractions? Apply the ponytail ladder.
 
-6. **Verify on matching surface.** Run the feature end-to-end — `terminal` for CLI, `browser_navigate` for UI. Not "tests pass" alone; the actual user-facing behavior works.
+6. **Verify on matching surface.** Run the feature end-to-end - `terminal` for CLI, `browser_navigate` for UI. Not "tests pass" alone; the actual user-facing behavior works.
 
 7. **Rebase into small ordered commits.** Each commit compiles, passes tests, and tells one story. Squash fixups.
 
-8. **If contested** — design choice is non-obvious or risky — run `pstack:interrogate` before shipping. Let it attack your assumptions.
+8. **If contested** - design choice is non-obvious or risky - run `pstack:interrogate` before shipping. Let it attack your assumptions.
 
 ## Key Rule
 

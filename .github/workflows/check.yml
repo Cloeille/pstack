@@ -8,3 +8,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: python3 scripts/check_refs.py
+  version:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: python3 scripts/check_version.py origin/${{ github.base_ref }}

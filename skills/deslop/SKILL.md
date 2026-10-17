@@ -2,7 +2,7 @@
 name: deslop
 description: Remove AI-generated code slop from a diff before committing.
 version: 1.0.0
-author: cursor-team-kit (Cursor), ported for Hermes
+author: Cursor team kit (Cursor), ported for Hermes
 license: MIT
 platforms: [linux, macos, windows]
 metadata:

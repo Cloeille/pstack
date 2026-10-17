@@ -26,6 +26,8 @@ CURSOR_LEFTOVERS = re.compile(
     r"\.cursor/|~/\.cursor|pstack-models\.mdc|AskQuestion|subagent_type"
     r"|\bTask tool\b|\bTask\(|`Read`|`Grep`|`Glob`|`Shell`|StrReplace"
     r"|agent-transcripts|orch\.ts|Hermes session history/"
+    r"|environment: \"cloud\"|cursor-team-kit|control-ui|control-cli|orch ledger|cloud agent"
+    r"|\bgt (?:submit|restack|sync|log|create|modify|checkout)\b"
 )
 
 for path in files:

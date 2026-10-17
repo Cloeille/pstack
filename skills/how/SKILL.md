@@ -1,14 +1,13 @@
----
-name: how
-description: 'Explain how code works. Subsystem walkthroughs and critique.'
+---name: how
+description: "Explain how code works. Subsystem walkthroughs and."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
-    tags: [code, architecture, exploration, explanation]
-    related_skills: [pstack:architect, pstack:interrogate]
+    tags: [engineering, workflow]
+    related_skills: []
 ---
 
 # How
@@ -25,9 +24,9 @@ When the user asks how a subsystem, feature, or mechanism works. Also invoked by
 
 Explore the codebase and produce an explanation.
 
-**Simple questions** (single module, one concept): do it in one pass — `search_files` to locate, `read_file` to understand, write the explanation.
+**Simple questions** (single module, one concept): do it in one pass - `search_files` to locate, `read_file` to understand, write the explanation.
 
-**Complex questions** (multi-file subsystem, cross-cutting concern): decompose into 2–4 exploration angles, delegate each as a read-only subagent via `delegate_task`, then synthesize results into a single explanation.
+**Complex questions** (multi-file subsystem, cross-cutting concern): decompose into 2-4 exploration angles, delegate each as a read-only subagent via `delegate_task`, then synthesize results into a single explanation.
 
 ### Critique
 
@@ -37,23 +36,23 @@ Explain first (as above), then spawn multiple `delegate_task` subagents to indep
 
 Explorers use `search_files` and `read_file` to trace code. The approach:
 
-1. **Start broad** — glob for directories (`search_files` with `target="files"`), grep for key types/interfaces/exports. Understand the shape before the details.
+1. **Start broad** - glob for directories (`search_files` with `target="files"`), grep for key types/interfaces/exports. Understand the shape before the details.
 
-2. **Follow the thread** — from entry points, trace callers and callees. Follow data flow: where is it created, transformed, consumed? Read actual code at each hop.
+2. **Follow the thread** - from entry points, trace callers and callees. Follow data flow: where is it created, transformed, consumed? Read actual code at each hop.
 
-3. **Read actual code** — don't stop at file names or function signatures. Read the implementation. The interesting behavior lives in the body, not the type.
+3. **Read actual code** - don't stop at file names or function signatures. Read the implementation. The interesting behavior lives in the body, not the type.
 
-4. **Note surprises** — anything that violates the expected pattern is worth calling out. Implicit dependencies, side effects, hidden state, fallback paths.
+4. **Note surprises** - anything that violates the expected pattern is worth calling out. Implicit dependencies, side effects, hidden state, fallback paths.
 
 ## Output Format
 
 Structure the explanation as:
 
-- **Overview** — one paragraph, what this subsystem does and why it exists
-- **Key Concepts** — types, abstractions, or domain terms needed to follow along
-- **How It Works** — step-by-step walkthrough of the main flow, referencing files and functions
-- **Where Things Live** — file/directory map of the relevant code
-- **Gotchas** — surprises, implicit contracts, known quirks, easy mistakes
+- **Overview** - one paragraph, what this subsystem does and why it exists
+- **Key Concepts** - types, abstractions, or domain terms needed to follow along
+- **How It Works** - step-by-step walkthrough of the main flow, referencing files and functions
+- **Where Things Live** - file/directory map of the relevant code
+- **Gotchas** - surprises, implicit contracts, known quirks, easy mistakes
 
 ## Delegation Pattern
 

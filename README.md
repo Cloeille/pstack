@@ -1,49 +1,54 @@
-# pstack — Hermes Plugin
+# pstack - Hermes Plugin
 
 Poteto's engineering rigor stack, adapted for [Hermes Agent](https://hermes-agent.nousresearch.com).
 
-Fork of [pstack](https://github.com/cursor/plugins/tree/main/pstack) by poteto (Meta/Netflix/Cursor, React core team). Originally built as a Cursor plugin, rebuilt here as a Hermes plugin with native skills, delegate_task orchestration, and playbook routing.
+Fork of [pstack](https://github.com/cursor/plugins/tree/main/pstack) by poteto (Meta/Netflix, React core team). Originally built as a Cursor plugin, adapted here for Hermes Agent with native skills, delegate_task orchestration, and playbook routing.
 
 ## What it does
 
-One orchestrator skill (`poteto-mode`) that routes tasks to playbooks and enforces principles. Five satellite skills for specific capabilities.
+One orchestrator skill (`poteto-mode`) routes tasks to playbooks. Supporting skills cover exploration, design, review, delegation, cleanup, memory, teaching, verification, and workflow.
 
 | Skill | Purpose |
 |-------|---------|
-| `pstack:poteto-mode` | Orchestrator. Task → playbook routing, principles, autonomy rules, delegation patterns. |
-| `pstack:how` | Codebase exploration. "How does X work?" with explain/critique modes. |
-| `pstack:architect` | Design types and module boundaries before implementing. "Design it twice." |
-| `pstack:interrogate` | Multi-reviewer adversarial code review via parallel delegates. |
-| `pstack:swarm` | Fan out N parallel workers, drain, report. |
-| `pstack:unslop` | Strip AI writing patterns. Apply to all prose. |
-| `pstack:setup-pstack` | Pick the model and reasoning budget delegates use. Writes Hermes `delegation` config. |
+| `pstack:poteto-mode` | Orchestrator and playbook routing. |
+| `pstack:how` | Codebase exploration. |
+| `pstack:architect` | Design types and module boundaries. |
+| `pstack:interrogate` | Adversarial multi-reviewer review. |
+| `pstack:swarm` | Parallel workers and aggregation. |
+| `pstack:unslop` | Clean AI writing patterns from prose. |
+| `pstack:deslop` | Clean AI code slop from diffs. |
+| `pstack:setup-pstack` | Configure the delegate model and reasoning budget. |
+| `pstack:automate-me`, `pstack:recall`, `pstack:reflect`, `pstack:show-me-your-work`, `pstack:why` | Personalization, history, reflection, evidence, and intent. |
+| `pstack:benchmark-checklist`, `pstack:blast-radius`, `pstack:bro`, `pstack:create-verification-skill`, `pstack:figure-it-out`, `pstack:maintain-verification-skill`, `pstack:no-comments`, `pstack:tdd`, `pstack:teach`, `pstack:technical-writing`, `pstack:typescript-best-practices` | Focused engineering workflows. |
+| `principle-*` (20 skills) | Engineering principles used by the orchestrator. |
+
 
 ## Playbooks
 
 Loaded via `skill_view(name='pstack:poteto-mode', file_path='playbooks/<name>.md')`:
 
-- `investigation.md` — read-only question, trace behavior
-- `bug-fix.md` — reproduce, root-cause, fix with evidence
-- `feature.md` — plan, design, delegate, verify
-- `perf-issue.md` — measure, profile, fix, measure again
-- `refactoring.md` — behavior-preserving restructuring
-- `autonomous-run.md` — long task with falsifiable exit predicate
-- `figure-it-out.md` — large/cross-cutting work, design your own workflow
+- `investigation.md` - read-only question, trace behavior
+- `bug-fix.md` - reproduce, root-cause, fix with evidence
+- `feature.md` - plan, design, delegate, verify
+- `perf-issue.md` - measure, profile, fix, measure again
+- `refactoring.md` - behavior-preserving restructuring
+- `autonomous-run.md` - long task with falsifiable exit predicate
+- `figure-it-out.md` - large/cross-cutting work, design your own workflow
 
 ## Guide
 
 Read the guide in order the first time. After that, each page stands alone.
 
-1. [Set up pstack](docs/guide/01-setup.md) — install, pick models, first task
-2. [Route work through poteto-mode](docs/guide/02-poteto-mode.md) — give it a goal, watch it pick a playbook
-3. [Understand the code](docs/guide/03-understand.md) — pstack:how before you edit anything
-4. [Design the change](docs/guide/04-design.md) — pstack:architect and pstack:interrogate before code locks in
-5. [Build and clean](docs/guide/05-build-and-clean.md) — build playbooks, TDD, unslop
-6. [Verify and ship](docs/guide/06-verify-and-ship.md) — prove behavior, open a PR, merge
-7. [Run work overnight](docs/guide/07-overnight.md) — autonomous contracts, decision logs
-8. [Principles](docs/guide/08-principles.md) — the full set in detail
-9. [Make it yours](docs/guide/09-make-it-yours.md) — customize skills and playbooks
-10. [Recipes and pitfalls](docs/guide/10-recipes-and-pitfalls.md) — prompts to copy, mistakes to skip
+1. [Set up pstack](docs/guide/01-setup.md) - install, pick models, first task
+2. [Route work through poteto-mode](docs/guide/02-poteto-mode.md) - give it a goal, watch it pick a playbook
+3. [Understand the code](docs/guide/03-understand.md) - pstack:how before you edit anything
+4. [Design the change](docs/guide/04-design.md) - pstack:architect and pstack:interrogate before code locks in
+5. [Build and clean](docs/guide/05-build-and-clean.md) - build playbooks, TDD, unslop
+6. [Verify and ship](docs/guide/06-verify-and-ship.md) - prove behavior, open a PR, merge
+7. [Run work overnight](docs/guide/07-overnight.md) - autonomous contracts, decision logs
+8. [Principles](docs/guide/08-principles.md) - the full set in detail
+9. [Make it yours](docs/guide/09-make-it-yours.md) - customize skills and playbooks
+10. [Recipes and pitfalls](docs/guide/10-recipes-and-pitfalls.md) - prompts to copy, mistakes to skip
 
 ## Slash commands
 

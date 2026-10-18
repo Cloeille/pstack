@@ -20,6 +20,8 @@ One orchestrator skill (`poteto-mode`) routes tasks to playbooks. Supporting ski
 | `pstack:setup-pstack` | Configure the delegate model and reasoning budget. |
 | `pstack:automate-me`, `pstack:recall`, `pstack:reflect`, `pstack:show-me-your-work`, `pstack:why` | Personalization, history, reflection, evidence, and intent. |
 | `pstack:benchmark-checklist`, `pstack:blast-radius`, `pstack:bro`, `pstack:create-verification-skill`, `pstack:figure-it-out`, `pstack:maintain-verification-skill`, `pstack:no-comments`, `pstack:tdd`, `pstack:teach`, `pstack:technical-writing`, `pstack:typescript-best-practices` | Focused engineering workflows. |
+| `pstack:ketchup`, `pstack:in-your-own-words`, `pstack:sharpen` | Catch up on what changed in a chat, restate the goal before starting, aim a task higher. |
+| `pstack:arena`, `pstack:correct`, `pstack:create-formal-verification-skill`, `pstack:poteto-help` | Parallel candidates with a cross-judge, repeated-mistake enforcement, formal verification, and the help map. |
 | `principle-*` (20 skills) | Engineering principles used by the orchestrator. |
 
 

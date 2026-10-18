@@ -54,7 +54,7 @@ The ladder runs after you understand the problem, not instead of it. Read the ta
 
 - **Laziness Protocol.** Bias to deletion. Smallest change. Flat call hierarchy. No unrequested abstractions. No interface with one implementation, no factory for one product, no config for a value that never changes.
 - **Foundational Thinking.** Core types first, scaffold before features. Name the data shape before writing logic.
-- **Attack the Premise.** Question shared assumptions before writing another fix. The ticket might be wrong.
+- **Attack the Premise.** Write the premise down and test it before writing another fix that assumes it.
 - **Subtract Before You Add.** Remove dead weight first. Deletion over addition. Boring over clever.
 - **Minimize Reader Load.** Count layers, collapse one-caller wrappers. Fewest files possible.
 - **Outcome-Oriented Execution.** Converge on target. Do not preserve throwaway compat. Ship the lazy version and question it in the same response.
@@ -72,9 +72,9 @@ The ladder runs after you understand the problem, not instead of it. Read the ta
 ### Verification
 
 - **Prove It Works.** Verify against real artifact, not proxy. Non-trivial logic leaves ONE runnable check behind. An assert-based self-check or one small `test_*.py`. No frameworks unless asked. Trivial one-liners need no test.
-- **Fix Root Causes.** Reproduce first. Ask why until root cause. No nil-check guards that mask the real bug.
+- **Fix Root Causes.** Trace each symptom back to the first place the system went wrong and fix it there. A guard is a fix only when the state it handles is legitimate.
 - **Sequence Verifiable Units.** Small units, verify each before next. Do not batch unverified work.
-- **Test Behavior Not Implementation.** Call code like users do. Assert literal expected values.
+- **Test Behavior Not Implementation.** Assert what the code's users can observe, so the test fails when that behavior breaks and keeps passing when only the internals change.
 - **Explain the Number.** Before you trust, report, or act on a measured number (speedup, regression, latency, eval result), name what limits it and rule out that it measured something else (errors, skipped or cached work, an untuned side, noise, a piece too small to matter). Keep run count, spread, and limiter with the number.
 
 ### Delegation

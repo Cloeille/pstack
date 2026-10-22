@@ -26,7 +26,7 @@ The parent finds its own conversation with the `session_search` tool, scoped to 
 
 ### 2. Detect the memory provider
 
-Check your own tool list for long-term memory tools (a Hermes memory provider such as Hindsight or mem0). Their descriptions tell you which one searches stored facts and which one stores a fact. No such tools means no memory steps. For provider-specific pitfalls, try `skill_view(name='pstack:memory-provider', file_path='references/<provider>.md')`, where `<provider>` is the tool name prefix. A missing file is fine, carry on without it. Note the provider name. Its store tool becomes a second destination: a learning that is a fact about this user or project (a preference, a decision and its reason, a repo gotcha) goes to memory, a rule that changes how any agent works goes to a skill. If no provider is present, every learning routes to skills as before.
+Check your own tool list for long-term memory tools (a Hermes memory provider such as Hindsight or mem0). Their descriptions tell you which one searches stored facts and which one stores a fact. No such tools means no memory steps. If the provider ships its own skill, follow it for that provider's pitfalls. Note the provider name. Its store tool becomes a second destination: a learning that is a fact about this user or project (a preference, a decision and its reason, a repo gotcha) goes to memory, a rule that changes how any agent works goes to a skill. If no provider is present, every learning routes to skills as before.
 
 ### 3. Spawn three reviewers in parallel
 

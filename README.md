@@ -19,6 +19,7 @@ One orchestrator skill (`poteto-mode`) routes tasks to playbooks. Supporting ski
 | `pstack:deslop` | Clean AI code slop from diffs. |
 | `pstack:setup-pstack` | Configure the delegate model and reasoning budget. |
 | `pstack:automate-me`, `pstack:recall`, `pstack:reflect`, `pstack:show-me-your-work`, `pstack:why` | Personalization, history, reflection, evidence, and intent. |
+| `pstack:memory-provider` | Notes for Hermes memory providers (Hindsight), read by recall and reflect. |
 | `pstack:benchmark-checklist`, `pstack:blast-radius`, `pstack:bro`, `pstack:create-verification-skill`, `pstack:figure-it-out`, `pstack:maintain-verification-skill`, `pstack:no-comments`, `pstack:tdd`, `pstack:teach`, `pstack:technical-writing`, `pstack:typescript-best-practices` | Focused engineering workflows. |
 | `principle-*` (20 skills) | Engineering principles used by the orchestrator. |
 

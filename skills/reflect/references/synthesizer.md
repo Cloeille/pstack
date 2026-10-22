@@ -10,6 +10,8 @@ Reviewer outputs:
 
 <DIVERGENT_OUTPUT>
 
+Memory provider: <MEMORY_PROVIDER>
+
 Apply each criterion to every finding:
 
 - Durability: still true in 6 months once paths, SHAs, tool versions, and code shapes have changed.
@@ -20,6 +22,8 @@ Apply each criterion to every finding:
 - Structural-mechanism check: route to Backlog when a lint rule, script, metadata flag, or runtime check already enforces the rule or could enforce it cheaply. Skill prose is for things mechanisms cannot enforce.
 - Skill-was-used: only accept findings that route to a skill, tool, or MCP the parent actually invoked in the transcript. If the skill wasn't used but should have been, route to `tune description: <skill path>` so it triggers next time. If neither, reject as `skill-not-used`.
 - Already-covered: read the target skill before accepting any body-edit row. If the proposal duplicates clear, well-placed existing guidance, reject as `already-covered`. The issue is execution, not the skill. If the existing guidance is buried, weak, or easy to skip past, accept the row but reframe the proposal as a wording / placement improvement to make it fire (not a duplicate addition).
+
+- Memory routing: only when the memory provider above is not `none`. A finding that fails Specificity because it is about this user or project, not about how agents work (a preference, a decision and its reason, a repo gotcha), and still passes Durability, routes to `retain: <provider>` instead of being rejected. A finding that changes agent behavior everywhere stays a skill edit. Never route the same finding to both.
 
 Drop (implementation details that drift):
 - "linter at SHA `bd91aa7` uses chars/4 heuristic"
@@ -42,6 +46,7 @@ Output exactly the format below. No preamble, no narration. One sentence per cel
 | <failure mode in a skill the parent used> | <change to that skill's body> | <skill path + section> |
 | <skill existed but didn't trigger> | <tune the skill's description so it fires next time> | <tune description: <skill path>> |
 | <new pattern, no existing skill is a real home> | <draft a new skill via create-skill> | <new skill via create-skill: <kebab-name>> |
+| <durable fact about this user or project> | <the fact, one self-contained sentence> | <retain: <provider>> |
 
 One row per finding. The user approves row by row.
 

@@ -71,3 +71,7 @@ Check whether the project has a way to drive the real app for proof: a `verify-*
 ### 9. Offer a formal verification skill (optional)
 
 Check whether the project already has a formal verification skill (a project skill that runs a model checker, a proof, or another verifier against the code). If not, offer once: "want a formal verification skill, so agents can prove a key property of your code holds in every case in scope, not only the cases tests reach? I can generate one with `pstack:create-formal-verification-skill`." On yes, load that skill. On no, move on without pushing.
+
+### 10. Report the memory provider
+
+Check your tool list for long-term memory tools from a Hermes memory provider. If there are none, skip this step. If there are, tell the user once that `pstack:recall` searches that memory before mining transcripts and `pstack:reflect` can route user and project facts to it instead of into skills, each fact approved first. Do not edit any skill or config here. Both skills detect the provider on every run, so a plugin update or a provider change needs no setup.

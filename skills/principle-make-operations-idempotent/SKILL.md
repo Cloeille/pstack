@@ -1,5 +1,6 @@
----name: principle-make-operations-idempotent
-description: "Apply when designing commands, lifecycle steps, or."
+---
+name: principle-make-operations-idempotent
+description: "Apply when designing commands or steps that may rerun."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

@@ -1,5 +1,6 @@
----name: principle-subtract-before-you-add
-description: "Apply when sequencing an addition, refactor, or rewrite.."
+---
+name: principle-subtract-before-you-add
+description: "Apply when adding or refactoring: remove complexity first."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

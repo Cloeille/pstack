@@ -1,5 +1,6 @@
----name: no-comments
-description: "Spawn Comment Sicko, fix accepted findings, and offer."
+---
+name: no-comments
+description: "Use to remove needless code comments via Comment Sicko."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

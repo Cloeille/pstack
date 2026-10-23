@@ -1,5 +1,6 @@
----name: poteto-mode
-description: "Engineering rigor orchestrator with playbooks and."
+---
+name: poteto-mode
+description: "Use first on any engineering task to route to a playbook."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

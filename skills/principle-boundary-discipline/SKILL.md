@@ -1,5 +1,6 @@
----name: principle-boundary-discipline
-description: "Apply when wiring validation, error handling, or."
+---
+name: principle-boundary-discipline
+description: "Apply when placing validation or error handling in code."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

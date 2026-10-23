@@ -1,5 +1,6 @@
----name: principle-type-system-discipline
-description: "Apply when designing types, reviewing a function."
+---
+name: principle-type-system-discipline
+description: "Apply when designing types or reviewing function signatures."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

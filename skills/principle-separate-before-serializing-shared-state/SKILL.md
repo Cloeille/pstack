@@ -1,5 +1,6 @@
----name: principle-separate-before-serializing-shared-state
-description: "Apply when concurrent actors might write to the same."
+---
+name: principle-separate-before-serializing-shared-state
+description: "Apply when concurrent actors may write the same state."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

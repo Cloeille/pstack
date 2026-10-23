@@ -1,5 +1,6 @@
----name: principle-foundational-thinking
-description: "Apply before writing logic: choosing core types and data."
+---
+name: principle-foundational-thinking
+description: "Apply before writing logic: pick core types and data first."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

@@ -1,5 +1,6 @@
----name: principle-guard-the-context-window
-description: "Apply when context is filling up: large outputs, long."
+---
+name: principle-guard-the-context-window
+description: "Apply when context fills with large outputs or files."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

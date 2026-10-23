@@ -1,5 +1,6 @@
----name: teach
-description: "Explain a body of work plainly so a person actually."
+---
+name: teach
+description: "Use to explain a body of work plainly at the user's pace."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

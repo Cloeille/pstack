@@ -1,5 +1,6 @@
----name: figure-it-out
-description: "Design an auditable playbook when no narrower one fits:."
+---
+name: figure-it-out
+description: "Use when no playbook fits: design an auditable one first."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

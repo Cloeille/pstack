@@ -1,5 +1,6 @@
----name: create-verification-skill
-description: "Generate a project-local verification skill that drives."
+---
+name: create-verification-skill
+description: "Generate a project-local skill that drives the real app."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

@@ -1,5 +1,6 @@
----name: principle-exhaust-the-design-space
-description: "Apply when facing a novel UI interaction or."
+---
+name: principle-exhaust-the-design-space
+description: "Apply when a novel UI or design has no precedent."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

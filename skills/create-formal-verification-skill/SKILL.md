@@ -1,4 +1,5 @@
----name: create-formal-verification-skill
+---
+name: create-formal-verification-skill
 description: "Generate a project-local formal verification skill."
 version: 0.1.0
 author: poteto (Hermes adaptation)

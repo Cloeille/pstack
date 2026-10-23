@@ -1,5 +1,6 @@
----name: how
-description: "Explain how code works. Subsystem walkthroughs and."
+---
+name: how
+description: "Use to explain how code works, with walkthroughs."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

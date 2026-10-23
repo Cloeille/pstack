@@ -1,4 +1,5 @@
----name: unslop
+---
+name: unslop
 description: "Cut AI tells from writing. Apply to all prose surfaces."
 version: 0.1.0
 author: poteto (Hermes adaptation)

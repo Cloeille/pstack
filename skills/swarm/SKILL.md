@@ -1,4 +1,5 @@
----name: swarm
+---
+name: swarm
 description: "Fan out parallel workers via delegate_task, drain, report."
 version: 0.1.0
 author: poteto (Hermes adaptation)

@@ -1,5 +1,6 @@
----name: principle-laziness-protocol
-description: "Apply when refactoring, evaluating diff size, or tempted."
+---
+name: principle-laziness-protocol
+description: "Apply when refactoring or tempted to add more code."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

@@ -1,5 +1,6 @@
----name: principle-test-behavior-not-implementation
-description: "Apply when you write, change, or keep a test. Call the."
+---
+name: principle-test-behavior-not-implementation
+description: "Apply when writing or reviewing tests: test behavior."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

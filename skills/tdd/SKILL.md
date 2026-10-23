@@ -1,5 +1,6 @@
----name: tdd
-description: "Use only when the user explicitly asks for TDD, a."
+---
+name: tdd
+description: "Use only when the user explicitly asks for TDD."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

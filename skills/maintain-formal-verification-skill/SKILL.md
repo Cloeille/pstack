@@ -1,4 +1,5 @@
----name: maintain-formal-verification-skill
+---
+name: maintain-formal-verification-skill
 description: "Resync formal verification with changed code."
 version: 0.1.0
 author: poteto (Hermes adaptation)

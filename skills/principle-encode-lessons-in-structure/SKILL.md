@@ -1,5 +1,6 @@
----name: principle-encode-lessons-in-structure
-description: "Apply when you catch yourself writing the same."
+---
+name: principle-encode-lessons-in-structure
+description: "Apply when writing the same instruction twice: encode it."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

@@ -1,5 +1,6 @@
----name: principle-attack-the-premise
-description: "Apply when two or more fixes that share one premise have."
+---
+name: principle-attack-the-premise
+description: "Apply when fixes sharing one premise keep failing a gate."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

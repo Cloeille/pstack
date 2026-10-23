@@ -1,5 +1,6 @@
----name: principle-prove-it-works
-description: "Apply after completing a task, before declaring done.."
+---
+name: principle-prove-it-works
+description: "Apply after finishing a task, before declaring it done."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

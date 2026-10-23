@@ -1,5 +1,6 @@
----name: principle-build-the-lever
-description: "Apply to any non-trivial work, not just bulk work:."
+---
+name: principle-build-the-lever
+description: "Apply to non-trivial work: build the tool that does it."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

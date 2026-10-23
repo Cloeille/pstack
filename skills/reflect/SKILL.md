@@ -1,5 +1,6 @@
----name: reflect
-description: "Spawn three parallel review subagents over the active."
+---
+name: reflect
+description: "Use when asked to reflect: route learnings into skills."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

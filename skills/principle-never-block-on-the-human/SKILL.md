@@ -1,5 +1,6 @@
----name: principle-never-block-on-the-human
-description: "Apply when tempted to ask 'should I do X?' on reversible."
+---
+name: principle-never-block-on-the-human
+description: "Apply when tempted to ask permission on reversible work."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

@@ -1,5 +1,6 @@
----name: maintain-verification-skill
-description: "Periodic pass that keeps a project's verification skill."
+---
+name: maintain-verification-skill
+description: "Use to resync a project's verification skill with its app."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

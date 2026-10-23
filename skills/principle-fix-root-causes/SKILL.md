@@ -1,5 +1,6 @@
----name: principle-fix-root-causes
-description: "Apply when debugging. Trace each symptom to its root."
+---
+name: principle-fix-root-causes
+description: "Apply when debugging: trace each symptom to its root."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

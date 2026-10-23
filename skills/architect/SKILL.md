@@ -1,4 +1,5 @@
----name: architect
+---
+name: architect
 description: "Design types and module structure before writing code."
 version: 0.1.0
 author: poteto (Hermes adaptation)

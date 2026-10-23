@@ -1,5 +1,6 @@
----name: bro
-description: "Restate the last message in plain human language, with."
+---
+name: bro
+description: "Use to restate your last message in plain human words."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

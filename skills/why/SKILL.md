@@ -1,5 +1,6 @@
----name: why
-description: "Use for 'why does X work this way', 'why we picked Y',."
+---
+name: why
+description: "Use for 'why does X work this way' or 'why did we pick Y'."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

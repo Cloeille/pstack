@@ -1,5 +1,6 @@
----name: principle-migrate-callers-then-delete-legacy-apis
-description: "Apply when introducing a new internal API while old."
+---
+name: principle-migrate-callers-then-delete-legacy-apis
+description: "Apply when replacing an internal API: migrate, then delete."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

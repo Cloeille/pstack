@@ -1,5 +1,6 @@
----name: blast-radius
-description: "Find what a change could break somewhere else before it."
+---
+name: blast-radius
+description: "Find what a change could break elsewhere before it ships."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

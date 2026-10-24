@@ -1,5 +1,6 @@
----name: automate-me
-description: "Use for \"automate me\", \"create/update/refresh my."
+---
+name: automate-me
+description: "Use for 'automate me' or to build a personal -mode skill."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

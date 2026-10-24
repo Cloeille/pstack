@@ -1,5 +1,6 @@
----name: technical-writing
-description: "Layered technical-writing standard: Diátaxis structure,."
+---
+name: technical-writing
+description: "Use when writing or editing technical docs or READMEs."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

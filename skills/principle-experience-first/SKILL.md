@@ -1,5 +1,6 @@
----name: principle-experience-first
-description: "Apply when product, UX, or feature-scope tradeoffs come."
+---
+name: principle-experience-first
+description: "Apply when product, UX, or scope tradeoffs come up."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

@@ -1,5 +1,6 @@
----name: principle-redesign-from-first-principles
-description: "Apply when integrating a new requirement into an."
+---
+name: principle-redesign-from-first-principles
+description: "Apply when adding a requirement to an existing design."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

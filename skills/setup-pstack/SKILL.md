@@ -1,4 +1,5 @@
----name: setup-pstack
+---
+name: setup-pstack
 description: "Pick the model and reasoning budget pstack delegates use."
 version: 0.1.0
 author: poteto (Hermes adaptation)

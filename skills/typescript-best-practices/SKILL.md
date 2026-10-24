@@ -1,5 +1,6 @@
----name: typescript-best-practices
-description: "TypeScript best practices. Use when reading or editing."
+---
+name: typescript-best-practices
+description: "Use when reading or editing TypeScript code."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

@@ -1,5 +1,6 @@
----name: recall
-description: "Reconstruct your recent working context from your own."
+---
+name: recall
+description: "Use before resuming work to rebuild recent context."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

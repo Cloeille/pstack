@@ -1,5 +1,6 @@
----name: principle-sequence-verifiable-units
-description: "Apply to multi-step work (sweeps, migrations, runs of."
+---
+name: principle-sequence-verifiable-units
+description: "Apply to multi-step work: verify each unit before the next."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

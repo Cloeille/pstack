@@ -1,5 +1,6 @@
----name: principle-minimize-reader-load
-description: "Apply when reviewing or shaping code that's hard to."
+---
+name: principle-minimize-reader-load
+description: "Apply when reviewing code that is hard to read or trace."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

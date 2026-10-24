@@ -1,4 +1,5 @@
----name: sharpen
+---
+name: sharpen
 description: "Sharpen a task's framing before starting the work."
 version: 0.1.0
 author: poteto (Hermes adaptation)

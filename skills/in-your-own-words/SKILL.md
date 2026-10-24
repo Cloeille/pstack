@@ -1,4 +1,5 @@
----name: in-your-own-words
+---
+name: in-your-own-words
 description: "Restate the user's goals and problem before work."
 version: 0.1.0
 author: poteto (Hermes adaptation)

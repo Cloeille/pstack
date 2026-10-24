@@ -1,5 +1,6 @@
----name: show-me-your-work
-description: "Keep a reviewable decision trail for long-running or."
+---
+name: show-me-your-work
+description: "Use for long-running work that needs a decision trail."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

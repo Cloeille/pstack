@@ -1,5 +1,6 @@
----name: principle-model-the-domain
-description: "Apply when writing stateful logic, or when code branches."
+---
+name: principle-model-the-domain
+description: "Apply when stateful logic branches on scattered conditions."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

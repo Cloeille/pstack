@@ -1,5 +1,6 @@
----name: principle-outcome-oriented-execution
-description: "Apply during planned rewrites and migrations with."
+---
+name: principle-outcome-oriented-execution
+description: "Apply during planned rewrites with explicit phase gates."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

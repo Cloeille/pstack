@@ -1,5 +1,6 @@
----name: principle-explain-the-number
-description: "Apply before you trust, report, or act on a number you."
+---
+name: principle-explain-the-number
+description: "Apply before you trust or report a measured number."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

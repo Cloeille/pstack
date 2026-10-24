@@ -1,5 +1,6 @@
----name: interrogate
-description: "Multi-model adversarial code review via parallel."
+---
+name: interrogate
+description: "Use before merging for adversarial multi-model code review."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT

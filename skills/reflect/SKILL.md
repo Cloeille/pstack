@@ -1,6 +1,6 @@
 ---
 name: reflect
-description: "Use when asked to reflect: route learnings into skills."
+description: "Use when reflecting: route learnings to skills or memory."
 version: 0.1.0
 author: poteto (Hermes adaptation)
 license: MIT
@@ -27,7 +27,7 @@ The parent finds its own conversation with the `session_search` tool, scoped to 
 
 ### 2. Detect the memory provider
 
-Check your own tool list for long-term memory tools (a Hermes memory provider such as Hindsight or mem0). Their descriptions tell you which one searches stored facts and which one stores a fact. No such tools means no memory steps. If the provider ships its own skill, follow it for that provider's pitfalls. Note the provider name. Its store tool becomes a second destination: a learning that is a fact about this user or project (a preference, a decision and its reason, a repo gotcha) goes to memory, a rule that changes how any agent works goes to a skill. If no provider is present, every learning routes to skills as before.
+Run `hermes config get memory.provider` with `terminal`. An empty value, `Config key not set`, or an error means no provider and no memory steps. Any other value is the provider name (for example `hindsight` or `mem0`). Find that provider's tools in your tool list: one searches stored facts, one stores a fact. The built-in `memory` tool and `session_search` ship with every install and are never the provider, so never use them for these steps. If the provider ships its own skill, follow it for that provider's pitfalls. Note the provider name, or `none`. Its store tool becomes a second destination: a learning that is a fact about this user or project (a preference, a decision and its reason, a repo gotcha) goes to memory, a rule that changes how any agent works goes to a skill. If no provider is present, every learning routes to skills as before.
 
 ### 3. Spawn three reviewers in parallel
 
@@ -41,11 +41,11 @@ One `delegate_task` call with three tasks, agent mode (not read-only: reviewers 
 
 Every task in one `delegate_task` call runs on the Hermes-configured `delegation.model` (set by `pstack:setup-pstack`). There is no per-task model override, so the three lenses get their diversity from the prompt, not the model. For genuine model diversity, run the three lenses as three separate rounds, changing `delegation.model` between rounds.
 
-Pass each template verbatim, substituting the transcript content or digest where marked. Reviewers return findings in their task result.
+Pass each template verbatim, substituting the transcript content or digest where marked, and the provider name from step 2 (or `none`) at `<MEMORY_PROVIDER>`. Reviewers return findings in their task result.
 
 ### 4. Synthesize
 
-One `delegate_task` call, agent mode (not read-only: the synthesizer's quality check spot-verifies citations, which can require MCP access). It runs on the same `delegation.model` as the reviewers unless you deliberately changed it between rounds. Use `references/synthesizer.md` verbatim, with each reviewer's full output inlined where marked and the provider name from step 2 (or `none`) at `<MEMORY_PROVIDER>`. The synthesizer returns a structured Accepted / Rejected / Backlog list.
+One `delegate_task` call, agent mode (not read-only: the synthesizer's quality check spot-verifies citations, which can require MCP access). It runs on the same `delegation.model` as the reviewers unless you deliberately changed it between rounds. Use `references/synthesizer.md` verbatim, with each reviewer's full output inlined where marked and the provider name from step 2 (or `none`) at `<MEMORY_PROVIDER>`. Never leave `<MEMORY_PROVIDER>` unsubstituted in any template. The synthesizer returns a structured Accepted / Rejected / Backlog list.
 
 ### 5. Structural enforcement check
 
@@ -63,7 +63,7 @@ For each approved Accepted item, follow the Routing field exactly:
 - Substantive existing-skill edit (a new section, a new pattern table, more than ~10 lines): hand to Hermes Agent's built-in `create-skill` skill and run its draft / test / iterate loop.
 - `tune description: <skill path>` (the skill exists but didn't trigger when it should have): hand to `create-skill` and run its description-optimization loop.
 - `new skill via create-skill: <kebab-name>`: hand creation to `create-skill`. Do not invent the shape ad hoc.
-- `retain: <provider>`: call the provider's store tool once per fact, with the fact as one self-contained sentence. Do these after the skill edits, so a slow provider does not block them.
+- `retain: <provider>`: first run the provider's search tool on the fact. If an equivalent fact is already stored, skip it and list it as dropped (`already-covered`). Otherwise call the provider's store tool once, with the approved sentence unchanged. Never store through the built-in `memory` tool. Do these after the skill edits, so a slow provider does not block them.
 
 If your environment ships a SKILL.md validator, run it on every touched skill before declaring done. Skip this step if it doesn't.
 

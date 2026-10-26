@@ -53,6 +53,8 @@ Before applying any Accepted edit, present the synthesizer's full Accepted/Rejec
 
 Backlog items file to whatever devex / backlog tracker your team uses automatically. Only the Accepted list waits for approval.
 
+Never edit a skill inside an installed plugin directory (for example `~/.hermes/plugins/<plugin>/skills/`). The next plugin update overwrites it. Before approval, show its destination: the active profile's skills directory (`~/.hermes/skills/<skill>/`, or `~/.hermes/profiles/<profile>/skills/<skill>/` under a named profile). After approval, copy the skill folder there and edit the copy. Never open a PR or push.
+
 For each approved Accepted item, follow the Routing field exactly:
 
 - Trivial existing-skill edit (a one-line bullet, a tightened sentence, a stale fact corrected): parent does directly.

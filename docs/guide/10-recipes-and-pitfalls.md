@@ -37,7 +37,7 @@ Each worker owns one package. The parent waits for every slice and returns one `
 /interrogate the whole branch, but skeptically. don't change anything yet. no nitpicks unless it's an actual bug or regression in behavior.
 ```
 
-The qualifiers do real work. "don't change anything yet" keeps it read-only, and the nitpick rule pre-filters the noise so `Act on` findings are worth your time.
+The qualifiers do real work. "don't change anything yet" keeps it read-only, and the nitpick rule pre-filters the noise so the verified findings are worth your time.
 
 ## Fix a bug through a failing test
 

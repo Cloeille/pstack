@@ -12,7 +12,7 @@
    - **Commit if it advanced.** Discard and try differently if it didn't.
    - Never make two unverified changes in a row.
 
-3. **Handle side discoveries.** Broken tests, related bugs, flaky verifiers - fix them yourself as they appear. Don't log them for later; they'll block the predicate if you ignore them. Keep fixes in separate commits.
+3. **Handle side discoveries that support the goal.** Broken tests, related bugs, flaky verifiers - fix them yourself as they appear. Don't log them for later; they'll block the predicate if you ignore them. Keep fixes in separate commits.
 
 4. **Checkpoint every iteration.** After each commit, re-evaluate: how many units remain? Is the approach still converging? If you've made 3 iterations with no progress, step back and reassess the approach - don't keep grinding the same wall.
 

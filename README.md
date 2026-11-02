@@ -13,7 +13,7 @@ One orchestrator skill (`poteto-mode`) routes tasks to playbooks. Supporting ski
 | `pstack:poteto-mode` | Orchestrator and playbook routing. |
 | `pstack:how` | Codebase exploration. |
 | `pstack:architect` | Design types and module boundaries. |
-| `pstack:interrogate` | Adversarial multi-reviewer review. |
+| `pstack:interrogate` | Adversaries break a change; only run-proven findings survive. |
 | `pstack:swarm` | Parallel workers and aggregation. |
 | `pstack:unslop` | Clean AI writing patterns from prose. |
 | `pstack:deslop` | Clean AI code slop from diffs. |
@@ -65,7 +65,7 @@ Then in any chat session:
 | `/poteto-mode` | Load the orchestrator (task routing, principles, delegation). |
 | `/how` | Codebase exploration. "How does X work?" |
 | `/architect` | Design types and boundaries before building. |
-| `/interrogate` | Adversarial multi-reviewer code review. |
+| `/interrogate` | Adversaries break a change; only run-proven findings survive. |
 | `/swarm` | Fan out parallel workers. |
 | `/unslop` | Strip AI writing patterns from prose. |
 | `/setup-pstack` | Pick the delegate model and reasoning budget. |

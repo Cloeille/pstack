@@ -87,6 +87,14 @@ hermes config set skills.external_dirs '["plugins/pstack/skills"]'
 
 Hermes loads it on next session start.
 
+## Releasing
+
+Bump `version` in `plugin.yaml` in every PR, as CI requires. Nothing else is manual.
+
+`.github/workflows/release.yml` runs hourly. Once the `plugin.yaml` version on `main` has no GitHub release and `main` has been quiet for 3 hours, it tags that commit, publishes a release with generated notes, and opens (or updates) the `plugin-catalog/pstack.yaml` bump PR on `NousResearch/hermes-agent`. Several merges in one burst produce one release for the latest. To release immediately, use Actions, Release, Run workflow, with `force` checked.
+
+The catalog PR needs a `CATALOG_TOKEN` repository secret: a classic personal access token from Cloeille with the `public_repo` scope. Without it the workflow still tags and releases, and logs a warning. To preview a run, use `DRY_RUN=1 bash scripts/release.sh`.
+
 ## License
 
 MIT

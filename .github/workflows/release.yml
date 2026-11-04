@@ -1,0 +1,31 @@
+name: Release
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Release now, skipping the 3 hour quiet period
+        type: boolean
+        default: false
+concurrency:
+  group: release
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  release:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          bash scripts/release.sh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CATALOG_TOKEN: ${{ secrets.CATALOG_TOKEN }}
+          FORCE: ${{ inputs.force }}

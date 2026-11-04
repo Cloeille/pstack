@@ -1,79 +1,44 @@
 ---
 name: interrogate
-description: "Use before merging for adversarial multi-model code review."
-version: 0.1.0
+description: "Use before merging to have adversaries break a change."
+version: 0.2.0
 author: poteto (Hermes adaptation)
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [engineering, workflow]
-    related_skills: []
+    related_skills: [pstack:in-your-own-words, pstack:swarm]
 ---
 
 # Interrogate
 
-Spawn multiple `delegate_task` subagents to adversarially review code changes. Adversarial signal comes from model diversity - independent reviewers finding the same issue means high confidence.
+Adversaries try to break a change or a design. A finding survives only when a run proves it. Report the findings. Do not apply fixes.
 
 ## When to Use
 
-Before merging significant changes. When you want more than one perspective on correctness, security, or design. When the stakes of a bug are high.
+Before merging significant changes, or to stress test a design you can prototype. Say "interrogate", "adversarial review", "challenge this", "stress test this code", "find blind spots", or "tear this apart".
 
-## Procedure
+## Frame
 
-### 1. Determine Scope
+The scope is what the user names. Otherwise it is the branch diff from its merge base with the base branch, through the working tree (`terminal` with `git diff $(git merge-base HEAD origin/main)`). State the intent with `pstack:in-your-own-words`, from the user's message, the commits, and the PR description. Ask the user when the intent is unclear.
 
-Identify what to review:
-- A diff (`terminal` with `git diff`)
-- Specific files (`search_files`, `read_file`)
-- Recent work (`git log --oneline -10`, then diff the range)
+## Fan out
 
-Collect the relevant code and context.
+Spawn two or three adversaries in parallel with `delegate_task`. Give each its own scratch copy of the repo (a `git clone` or `git worktree add` under the scratch directory) with the scope's uncommitted changes applied, so repros never touch the real checkout. When the delegation config allows another model family, run adversaries on different families. Otherwise vary the angle each one attacks first. Give each adversary the scope, the intent, its copy's absolute path, and this brief:
 
-### 2. State Intent
+> Break this change. Prove each finding with a run against the real code, such as a failing test, a repro script, or command output that shows the wrong behavior. For a design or plan, run a prototype or probe the current tree. Keep repros in your own copy. Report each finding with a title, the exact command, the output it printed, and the output the intent requires. Leave out anything you did not run. That covers style, naming, structure, and risks that need a future change to matter. No findings is a valid result.
 
-Write one sentence: what does this code change try to accomplish? This anchors every reviewer. Without it, reviewers invent their own assumptions.
+If an adversary returns nothing, continue with the rest and note the dropout.
 
-### 3. Spawn Reviewers
+## Verify
 
-Launch at least 2-3 parallel reviewers via `delegate_task`. Each gets the same prompt:
+Rerun each finding's command yourself with `terminal`. Keep a finding when the output shows the failure and the failure breaks the intent. Drop the rest. Merge findings that share a root cause.
 
-```
-Review this code change.
+Adversaries find different failures, so the verdict keeps every verified finding, not one adversary's list. Do not pick a winner.
 
-Intent: [one sentence from step 2]
+## Output
 
-Code:
-[the diff or file contents]
-
-Review against this rubric:
-- Correctness: does it do what intent says? Logic errors, off-by-ones, nil paths?
-- Edge cases: empty inputs, concurrent access, large inputs, unicode, zero/negative values?
-- Security: injection, auth bypass, secrets in code, unsafe deserialization?
-- Performance: unnecessary allocations, O(n²) where O(n) works, missing indexes?
-- Maintainability: unclear names, implicit coupling, missing error context?
-
-For each finding:
-- Quote the relevant code
-- State the problem
-- Rate severity: critical / warning / nit
-- Suggest a fix (one-liner if possible)
-```
-
-### 4. Synthesize
-
-Read all reviewer outputs. Consolidate:
-
-- **Agreement** (2+ reviewers flagged it) → high confidence, include in verdict
-- **Lone findings** → lower confidence, include as "worth reading" with the single reviewer's reasoning
-- **Contradictions** → re-read the code yourself to break the tie
-
-### Deliverable
-
-One synthesized verdict with:
-- Summary (ship / revise / block)
-- High-confidence findings (with code quotes)
-- Worth-reading findings
-- What reviewers agreed was fine
-
-**Do NOT auto-apply changes.** Present findings. The user decides.
+- **Intent**: the restatement.
+- **Findings**: for each verified finding, the command, its output, how it breaks the intent, and the adversaries that found it. Say "no verified findings" when none survive.
+- **Dropped**: for each adversary, the count of dropped findings and why.

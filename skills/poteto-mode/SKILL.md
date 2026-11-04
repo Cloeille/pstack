@@ -25,6 +25,7 @@ These triggers fire before you write anything. No exceptions.
 
 | Trigger | Action |
 |---------|--------|
+| Your first message on a task | Tell the user, in your own words, their goal, the problem they are solving, and, if the task ships a change, the smallest change you expect to meet it. Don't wait for confirmation. If the evidence rules out the change they asked for, show it and stop. Restate the goal in each subagent brief, in each PR's `## Why`, and at the top of each final report, except after a fully specified one-line edit. |
 | Nontrivial change (new feature, refactor, multi-file edit) | `skill_view(name='pstack:how')` first. Plan before code. |
 | Any code produced | Name the data shape before writing logic. Types first, functions second. |
 | Code crossing a function/module boundary | `skill_view(name='pstack:architect')`. Design the seam. |
@@ -76,7 +77,7 @@ The ladder runs after you understand the problem, not instead of it. Read the ta
 - **Fix Root Causes.** Reproduce first. Ask why until root cause. No nil-check guards that mask the real bug.
 - **Sequence Verifiable Units.** Small units, verify each before next. Do not batch unverified work.
 - **Test Behavior Not Implementation.** Call code like users do. Assert literal expected values.
-- **Explain the Number.** Before you trust, report, or act on a measured number (speedup, regression, latency, eval result), name what limits it and rule out that it measured something else (errors, skipped or cached work, an untuned side, noise, a piece too small to matter). Keep run count, spread, and limiter with the number.
+- **Explain the Number.** Before you measure, write the result that would change a decision and the noise floor. Before you trust, report, or act on a measured number (speedup, regression, latency, eval result), name what limits it and rule out that it measured something else (errors, skipped or cached work, an untuned side, noise, a piece too small to matter). Keep run count, spread, and limiter with the number.
 
 ### Delegation
 

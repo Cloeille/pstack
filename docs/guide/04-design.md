@@ -54,9 +54,9 @@ Reach for it when parallelism buys coverage or lets independent checks race. Com
 load pstack:interrogate the whole branch, but skeptically. no nitpicks unless it's an actual bug or regression.
 ```
 
-[`pstack:interrogate`](../../skills/interrogate/SKILL.md) sends the same diff, intent, and rubric to several reviewers on different model families. Model diversity is the point. Different models have different blind spots, so a finding two models raise independently is high-confidence signal. The lead sorts everything into `Act on`, `Consider`, `Noted`, and `Dismissed`, with a reason for each dismissal, and applies nothing automatically.
+[`pstack:interrogate`](../../skills/interrogate/SKILL.md) gives the change and its intent to adversaries spawned with `delegate_task`, and each tries to break it with a run against the real code. Adversaries find different failures. A finding survives only when rerunning its command shows a failure that breaks the intent. The report lists every verified finding with the adversaries that found it, then what each adversary dropped and why, and applies nothing.
 
-Read the dismissals too. The lead is a pragmatic senior engineer, not an oracle, and you can override it.
+Read the Dropped list too. You can override the verdict.
 
 ## How much design work does a task deserve?
 

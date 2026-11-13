@@ -17,7 +17,7 @@ One orchestrator skill (`poteto-mode`) routes tasks to playbooks. Supporting ski
 | `pstack:swarm` | Parallel workers and aggregation. |
 | `pstack:unslop` | Clean AI writing patterns from prose. |
 | `pstack:deslop` | Clean AI code slop from diffs. |
-| `pstack:setup-pstack` | Configure the delegate model and reasoning budget. |
+| `pstack:setup-pstack` | Configure the delegate models and reasoning budget, with optional per-role model routes. |
 | `pstack:automate-me`, `pstack:recall`, `pstack:reflect`, `pstack:show-me-your-work`, `pstack:why` | Personalization, history, reflection, evidence, and intent. |
 | `pstack:benchmark-checklist`, `pstack:blast-radius`, `pstack:bro`, `pstack:create-verification-skill`, `pstack:figure-it-out`, `pstack:maintain-verification-skill`, `pstack:no-comments`, `pstack:tdd`, `pstack:teach`, `pstack:technical-writing`, `pstack:typescript-best-practices` | Focused engineering workflows. |
 | `principle-*` (20 skills) | Engineering principles used by the orchestrator. |
@@ -68,7 +68,7 @@ Then in any chat session:
 | `/interrogate` | Adversaries break a change; only run-proven findings survive. |
 | `/swarm` | Fan out parallel workers. |
 | `/unslop` | Strip AI writing patterns from prose. |
-| `/setup-pstack` | Pick the delegate model and reasoning budget. |
+| `/setup-pstack` | Pick the delegate models and reasoning budget. |
 
 Append an instruction after the command: `/how how does auth work in this repo`
 

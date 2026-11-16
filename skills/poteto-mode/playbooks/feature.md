@@ -4,7 +4,7 @@
 
 ## Steps
 
-1. **Understand the subsystem.** Run `pstack:how` over every module the feature touches. Don't design until you know what's already there.
+1. **Understand the subsystem.** Trace every module the feature touches. Don't design until you know what's already there.
 
 2. **Design exploration.** Run `pstack:architect` - explore approaches, pick one, document why. Output: a short design doc with the chosen approach and its trade-offs.
 

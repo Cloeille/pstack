@@ -6,9 +6,7 @@ No code changes. No PR. Read-only answer.
 
 ## Steps
 
-1. **Route through `pstack:how`** - pick the right mode:
-   - *Explain* for "how does X work" / "where does Y live"
-   - *Critique* for "should we do X or Y" / "is this approach sound"
+1. **Trace the code the question is about.** For motivation questions, also route through `pstack:why`. For a decision between alternatives, the deliverable is a recommendation with a tradeoffs table instead of the structure in step 3.
 
 2. **Gather context** - `search_files` + `read_file` to trace the real flow end-to-end. Don't stop at the entry point; follow calls until the picture is complete. Use `web_search` / `web_extract` for external APIs or specs.
 

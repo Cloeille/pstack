@@ -23,7 +23,7 @@ Before building a new subsystem, feature, or significant refactor. When the shap
 
 ### A. Ground the Problem
 
-Run `pstack:how` over relevant existing subsystems. Understand what's already there before designing something new. Read the code the new work will touch and integrate with.
+Trace the relevant existing subsystems. Naming a file isn't grounding. Read the code the new work will touch and integrate with, and write an architectural explanation of each. If the design redefines ownership or layering, also run `pstack:why` on the existing shape so the rationale becomes a constraint, not a guess.
 
 ### B. Sketch
 

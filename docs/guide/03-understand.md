@@ -10,7 +10,7 @@ Editing code you don't understand is how subtle regressions ship. pstack gives y
 load pstack:how do we dedupe notifications? is there an n+1 when we look up subscribers?
 ```
 
-Ask the question you actually have. [`pstack:how`](../../skills/how/SKILL.md) reads the code and answers at the level of a senior engineer onboarding you onto the subsystem, with the runtime flow, the key types, and the non-obvious parts. For a big subsystem it fans out two to four read-only explorers first. For a narrow question it just reads and explains.
+Ask the question you actually have. [`pstack:how`](../../skills/how/SKILL.md) reads the code and answers at the level of a senior engineer onboarding you onto the subsystem, with the runtime flow, the key types, and the non-obvious parts. It starts one read-only `delegate_task` subagent that explores the code and writes the explanation.
 
 ## Dig up history with `pstack:why`
 
@@ -18,7 +18,7 @@ Ask the question you actually have. [`pstack:how`](../../skills/how/SKILL.md) re
 load pstack:why was the retry limit set to five? does the reason still hold?
 ```
 
-[`pstack:why`](../../skills/why/SKILL.md) works like a detective on a cold case. It starts from source control, then queries whatever evidence categories your MCPs expose, such as the issue tracker, long-form docs, team chat, observability, error tracking, and analytics, all in parallel. The report cites everything, separates direct evidence from inference, and says "appears to" when the record is thin. A null result gets reported too, because "nobody wrote down why" is itself an answer.
+[`pstack:why`](../../skills/why/SKILL.md) answers from the record, not the code. It reads the commits and PR discussions that introduced the code and each later change, and looks at other sources when that trail is thin. The answer cites what the authors wrote, marks the agent's own inferences as inferences, and says what the record does not answer, because "nobody wrote down why" is itself an answer.
 
 The two compose naturally. `do why first then how` is a perfectly good prompt when you suspect the history explains the mess.
 

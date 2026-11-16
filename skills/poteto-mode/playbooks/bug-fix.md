@@ -6,7 +6,7 @@
 
 1. **Reproduce it yourself.** Don't ask the user for more info yet - try to hit the bug with `terminal`, tests, or manual verification. If you can't reproduce, *then* ask. A bug you can't trigger is a bug you can't verify you fixed.
 
-2. **Binary-search the cause.** Seed understanding with `pstack:how` over the affected subsystem. Then:
+2. **Binary-search the cause.** Seed understanding by tracing the affected subsystem yourself (`search_files`, `read_file`). Then:
    - Form 2-3 hypotheses for root cause.
    - For each: find runtime evidence that confirms or eliminates it (`terminal` for logs/debugger, `search_files` for call sites, `read_file` to trace flow).
    - Eliminate until one survives. If none survive, your model is wrong - re-read.

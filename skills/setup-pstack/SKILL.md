@@ -114,7 +114,15 @@ The value in parentheses is the `reasoning_effort` to write. With routes, every 
 
 ### 5. Ask for the delegate models
 
-**With routes.** Show each route from the table with its current model, or the suggestion when the route does not exist yet. Use `clarify` to accept them or change specific ones, from the detected models plus `inherit-parent`. For a route, `inherit-parent` means a route with the parent's `model.default` on `model.provider`. For the panel, propose two models from different families. Let the user add `pstack-panel-c` and more, or remove the panel. A panel keeps two or more routes, or none. If a chosen model needs a provider other than the parent's, ask for that provider too (it must already be configured in Hermes).
+**With routes.** Ask one question per route in a single `clarify` call, so the user corrects each route where it is asked. `clarify` takes up to five questions with up to four choices each, and always adds an "Other" row for a typed answer.
+
+- Ask one question each for `pstack-worker`, `pstack-strongest`, `pstack-panel-a`, and `pstack-panel-b`. Say in the question what the route runs.
+- Offer the route's current model first, or the table's suggestion when the route does not exist yet. Then offer up to three other models from the step 2 list. Write each choice as `provider / model`, so one answer sets both.
+- For `pstack-worker` and `pstack-strongest`, one choice can be `inherit-parent`, which means a route with the parent's `model.default` on `model.provider`.
+- For the two panel questions, offer models from families that differ from each other.
+- Use the fifth question to ask whether to keep two panel members, add more, or have no panel. A panel keeps two or more routes, or none. For each added member, ask a `pstack-panel-*` question in a follow-up `clarify` call.
+
+When a typed answer names a model the step 2 list does not show, or names no provider, confirm it with the user before you write it.
 
 **Without routes.** Use `clarify`. Offer `inherit-parent` first, then the detected models. Show the current value. If the chosen model needs a provider other than the parent's, ask for that provider too (it must already be configured in Hermes).
 

@@ -29,7 +29,7 @@ A pstack route is a route whose name starts with `pstack-`. Setup writes and rep
 
 Everything a `terminal` command prints enters the conversation and goes to the model provider. Hermes masks credential-shaped text in tool output by default, but the mask is a pattern match, and the user can turn it off with `security.redact_secrets`. Follow these rules.
 
-- To read config, run only the step 1 commands. They print single values and a route summary with no keys. Do not run `hermes config get` on a whole section such as `delegation` or `model`, because it prints keys when redaction is off.
+- To read config, run only the step 1 and step 2 commands. They print single values, a route summary, and model lists, with no keys. Do not run `hermes config get` on a whole section such as `delegation` or `model`, because it prints keys when redaction is off.
 - Do not read `config.yaml`, `.env`, `auth.json`, or any other file under the Hermes home yourself. Only the step 6 script reads `config.yaml`, in memory.
 - Never print the output of a `--raw` read. Only the step 1 route summary reads it, and it prints no keys.
 - Do not trace or debug the step 6 script, for example by adding prints or running it under `bash -x`.
@@ -60,7 +60,32 @@ The last command prints one line per route, with its name, provider, model, reas
 
 ### 2. Detect available models
 
-List the models the user can actually route to, from the models step 1 printed. Ask the user to paste any other slugs they have. Do not run `hermes model`, which is an interactive picker that changes the default model. Do not call a provider's API yourself, because that needs a key. Never write a model you have not confirmed. `inherit-parent` is always valid: it means leave `delegation.model` empty so delegates run on the parent chat model.
+List the models the user can route to with the command below. It reads the model lists Hermes caches for its model pickers, and prints one line per provider with the provider name to use in a route, the model count, the age of the cache, and the model ids. It prints no keys and no endpoints.
+
+```bash
+python3 - "$(hermes config path)" <<'PY'
+import json, subprocess, sys, time
+from pathlib import Path
+
+cache_path = Path(sys.argv[1]).parent / "provider_models_cache.json"
+cache = json.loads(cache_path.read_text()) if cache_path.exists() else {}
+got = subprocess.run(["hermes", "config", "get", "providers", "--json"], capture_output=True, text=True)
+named = json.loads(got.stdout) if got.returncode == 0 and got.stdout.strip() else {}
+by_url = {str(p.get("base_url") or "").rstrip("/").lower(): f"custom:{name}"
+          for name, p in (named.items() if isinstance(named, dict) else []) if isinstance(p, dict) and p.get("base_url")}
+
+for key, entry in cache.items():
+    source = key.split("#", 1)[0]
+    provider = by_url.get(source[len("custom:"):].rstrip("/").lower(), "") if source.startswith("custom:") else source
+    if not provider:
+        continue
+    models = entry.get("models") or []
+    hours = (time.time() - entry.get("at", 0)) / 3600
+    print(f"{provider} | {len(models)} models | cached {hours:.0f}h ago | " + ", ".join(models))
+PY
+```
+
+Offer models from this list, and use each provider name exactly as printed, such as `custom:bifrost`. When a provider the user wants is missing, or its cache is days old, ask the user to run `hermes model --refresh` in their own terminal and leave the picker without choosing once it loads. Then run the command again. Do not run `hermes model` yourself, because it is an interactive picker that changes the default model. Do not call a provider's API yourself, because that needs a key. Ask the user to paste a slug only for a model the list does not show. Never write a model you have not confirmed. `inherit-parent` is always valid: it means leave `delegation.model` empty so delegates run on the parent chat model.
 
 ### 3. Offer model routes
 
@@ -101,7 +126,7 @@ Fill in two values first. `PSTACK_ROUTES` is the JSON list of the pstack routes 
 
 - `name`, exactly as in the table.
 - `description`, the one line the agent reads. Name the model in it, so the agent can pick a different family, as in `pstack worker on <model>. Code delegates and routine helpers.`
-- `provider`. For a prefilled `pstack-worker`, use `delegation.provider`, or `model.provider` when that is empty. For another model on the parent's provider, use `model.provider`. Otherwise use the provider from step 5, or `base_url` for a direct endpoint.
+- `provider`. For a prefilled `pstack-worker`, use `delegation.provider`, or `model.provider` when that is empty. For another model on the parent's provider, use `model.provider`. Otherwise use the provider name step 2 printed for the model, or `base_url` for a direct endpoint.
 - `model` and `reasoning_effort`.
 
 ```bash

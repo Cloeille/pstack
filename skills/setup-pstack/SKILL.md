@@ -60,7 +60,7 @@ The last command prints one line per route, with its name, provider, model, reas
 
 ### 2. Detect available models
 
-List the models the user can route to with the command below. It reads the model lists Hermes caches for its model pickers, and prints one line per provider with the provider name to use in a route, the model count, the age of the cache, and the model ids. It prints no keys and no endpoints.
+List the models the user can route to with the command below. It reads the model lists that Hermes caches for its model pickers. It prints one line per provider, with the provider name to use in a route, the model count, the cache age, and the model ids. It prints no keys and no endpoints.
 
 ```bash
 python3 - "$(hermes config path)" <<'PY'
@@ -85,7 +85,7 @@ for key, entry in cache.items():
 PY
 ```
 
-Offer models from this list, and use each provider name exactly as printed, such as `custom:bifrost`. When a provider the user wants is missing, or its cache is days old, ask the user to run `hermes model --refresh` in their own terminal and leave the picker without choosing once it loads. Then run the command again. Do not run `hermes model` yourself, because it is an interactive picker that changes the default model. Do not call a provider's API yourself, because that needs a key. Ask the user to paste a slug only for a model the list does not show. Never write a model you have not confirmed. `inherit-parent` is always valid: it means leave `delegation.model` empty so delegates run on the parent chat model.
+Offer models from this list, and use each provider name exactly as printed, such as `custom:bifrost`. When a provider the user wants is missing, or its cache is days old, ask the user to run `hermes model --refresh` in their own terminal. Once the picker loads, they leave it without choosing. Then run the command again. Do not run `hermes model` yourself, because it is an interactive picker that changes the default model. Do not call a provider's API yourself, because that needs a key. Ask the user to paste a slug only for a model the list does not show. Never write a model you have not confirmed. `inherit-parent` is always valid. Without routes, it leaves `delegation.model` empty, so delegates run on the parent chat model. Step 5 says what it means for a route.
 
 ### 3. Offer model routes
 
@@ -128,7 +128,7 @@ When a typed answer names a model the step 2 list does not show, or names no pro
 
 ### 6. Write the config
 
-**With routes.** `options` is one list, and `hermes config set` replaces it whole. The merge must start from what the user wrote. `hermes config get` masks keys such as `api_key`, and `--raw` expands `${VAR}` references into the keys they point at, so a write of either output destroys the user's keys or moves them out of `.env`. Run the script below in one `terminal` call. It reads the route list from `config.yaml` with PyYAML, holds it only in memory, never prints it, and captures the output of `hermes config set`, which echoes keys unmasked.
+**With routes.** `options` is one list, and `hermes config set` replaces it whole. The merge must start from what the user wrote. `hermes config get` masks keys such as `api_key`. With `--raw`, it expands `${VAR}` references into the keys they point at. A write of either output destroys the user's keys or moves them out of `.env`. Run the script below in one `terminal` call. It reads the route list from `config.yaml` with PyYAML and holds it only in memory. It never prints the list, and it captures the output of `hermes config set`, which echoes keys unmasked.
 
 Fill in two values first. `PSTACK_ROUTES` is the JSON list of the pstack routes the user chose. `SWITCH_BACKEND` is `True` when step 1 showed a backend other than `model_map`, else `False`. Each pstack route is an object with these keys:
 
@@ -200,7 +200,7 @@ Run the step 1 config commands again, and check that each written value reads ba
 
 ### 8. Confirm
 
-Tell the user what was written and that it applies to new sessions. With routes, list each pstack route and its model, name the route that runs a task with no route, say that `/delegation model_map --now` applies the routes to the current chat, and say that `delegation.model` no longer applies. Without routes, say whether setup switched the backend back to `default`, and that any routes in config apply again if the user turns the plugin and `model_map` back on. Every delegate runs on one model, so panel skills (`pstack:interrogate`, `pstack:architect`) get their diversity from independent subagents and distinct prompts.
+Tell the user what was written and that it applies to new sessions. With routes, list each pstack route and its model, and name the route that runs a task with no route. Say that `/delegation model_map --now` applies the routes to the current chat, and that `delegation.model` no longer applies. Without routes, say whether setup switched the backend back to `default`, and that any routes in config apply again if the user turns the plugin and `model_map` back on. Every delegate runs on one model, so panel skills (`pstack:interrogate`, `pstack:architect`) get their diversity from independent subagents and distinct prompts.
 
 ### 9. Offer a verification path (optional)
 

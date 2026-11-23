@@ -34,9 +34,8 @@ List the models the user can actually route to. Use `hermes model` output, the p
 
 ### 3. Ask for a budget
 
-Use `clarify` with these four choices. Name the current budget when `delegation.reasoning_effort` is set.
+Use `clarify` with these three choices. Name the current budget when `delegation.reasoning_effort` is set.
 
-- `unlimited (max)`
 - `large (xhigh)`
 - `medium (high)`
 - `small (medium)`

@@ -26,6 +26,7 @@ These triggers fire before you write anything. No exceptions.
 | Trigger | Action |
 |---------|--------|
 | Your first message on a task | Tell the user, in your own words, their goal, the problem they are solving, and, if the task ships a change, the smallest change you expect to meet it. Don't wait for confirmation. If the evidence rules out the change they asked for, show it and stop. Restate the goal in each subagent brief, in each PR's `## Why`, and at the top of each final report, except after a fully specified one-line edit. |
+| Starting any `delegate_task` subagent | The first line of its brief is `Read <abs path of this skill folder>/worker.md before anything else.` The operator's rules live in skills that only load on request, so they reach a subagent no other way. Keep the rest of the brief to the goal and the task. |
 | Any code produced | Name the data shape before writing logic. Types first, functions second. |
 | Code crossing a function/module boundary | `skill_view(name='pstack:architect')`. Design the seam. |
 | Parallel fan-out (3+ independent slices) | `skill_view(name='pstack:swarm')`. Coordinate subagents. |
@@ -103,7 +104,7 @@ Match the task to a playbook. Load it before starting work.
 | Refactoring (restructure without behavior change) | `skill_view(name='pstack:poteto-mode', file_path='playbooks/refactoring.md')` |
 | Autonomous run (multi-step, long-running, low-supervision) | `skill_view(name='pstack:poteto-mode', file_path='playbooks/autonomous-run.md')` |
 
-**Figure it out.** For large or cross-cutting work when no narrower playbook fits, combine investigation + the most relevant playbook. Start with investigation to scope, then switch.
+**Figure it out.** Large, cross-cutting, or unattended work, or a task no playbook fits, routes to `pstack:figure-it-out`. It designs one rigorous run, including a whole program such as a migration across many packages.
 
 ## WRITING THE REPLY
 
@@ -129,7 +130,7 @@ Use Hermes `delegate_task` for code-writing subagents. The session that loads `p
 3. **Write your own summary.** Never pass a subagent's output verbatim to the user. Synthesize, verify, then report.
 4. **Guard context.** Send subagents the minimum context they need. File paths, function signatures, expected behavior. Not the whole conversation.
 5. **Scope narrowly.** Each subagent gets one well-defined slice. If a subagent needs to coordinate with another, you are doing it wrong. Redesign the split.
-6. **Fresh subagents by default.** A fix round, follow-up, retry, or next queue item goes to a fresh `delegate_task` with consolidated scope: the original brief, every later directive, and the prior agent's report. Never trust a "done" summary from an interrupted run. Fire a fresh one instead.
+6. **Fresh subagents by default.** A fix round, follow-up, retry, or next queue item goes to a fresh `delegate_task` with the original brief, every later directive, and the prior agent's report and branch. Never trust a "done" summary from an interrupted run. Reuse an existing agent only when the work needs state that lives in it and is costly to move: its checkout, its uncommitted changes, or a process it still runs.
 
 ## WHEN NOT TO BE LAZY
 

@@ -28,7 +28,7 @@ Right after a task that taught you something, run:
 load pstack:reflect that took way too long. capture what we learned so the next run doesn't repeat it.
 ```
 
-[`pstack:reflect`](../../skills/reflect/SKILL.md) sends the transcript to three parallel reviewers, then a synthesizer sorts the proposals into `Accepted`, `Rejected`, and `Backlog` and waits for your approval before any skill changes. Approve a proposal only if it would change a future decision. One weird session is an anecdote, not a rule.
+[`pstack:reflect`](../../skills/reflect/SKILL.md) reads the transcript, keeps only lessons that would change a future agent's work, and sorts the proposals into `Accepted`, `Rejected`, and `Backlog`. It waits for your approval before any skill changes. Approve a proposal only if it would change a future decision. One weird session is an anecdote, not a rule.
 
 ## Author a focused skill
 

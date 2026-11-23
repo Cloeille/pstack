@@ -6,7 +6,7 @@
 
 1. **Understand the subsystem.** Trace every module the feature touches. Don't design until you know what's already there.
 
-2. **Design exploration.** Run `pstack:architect` - explore approaches, pick one, document why. Output: a short design doc with the chosen approach and its trade-offs.
+2. **Design exploration.** Run `pstack:architect` for the shape. Output: a short design doc with the chosen approach and its trade-offs.
 
 3. **Throughput checkpoint.** Before delegating, answer in writing:
    - What are the blocking first steps (must happen before anything else)?

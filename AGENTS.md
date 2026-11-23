@@ -10,7 +10,7 @@ __init__.py          # register(ctx), auto-registers every skill directory
 skills/
   poteto-mode/       # orchestrator - routes tasks to playbooks
     SKILL.md
-    playbooks/*.md   # 17 step-by-step procedures
+    playbooks/*.md   # 16 step-by-step procedures
   how/SKILL.md       # codebase exploration
   architect/SKILL.md # design before code
   interrogate/SKILL.md # adversarial multi-reviewer

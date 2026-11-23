@@ -55,7 +55,7 @@ Before the skill hands back its summary, it spawns a reviewer on a different mod
 
 ## When the night holds a queue, not a task
 
-The contract above drives one task to one finish condition. Some nights hold more, a queue of independent changes or a whole program. Three playbooks scale the same trust up.
+The contract above drives one task to one finish condition. Some nights hold more, a queue of independent changes or a whole program. Two playbooks and one skill scale the same trust up.
 
 [Autopilot-full](../../skills/poteto-mode/playbooks/autopilot-full.md) runs a queue of independent PRs to merged. Each PR gets one owner agent (via delegate_task) that carries it from build through merge, and no owner merges on its own verdict. A swarm of fresh verifiers starts a round at the owner's code-ready head and again at every later push that changes the patch. Only a clean verdict on the patch that merges authorizes the merge:
 
@@ -69,10 +69,10 @@ load pstack:poteto-mode full autopilot on this queue. each item is independent. 
 load pstack:poteto-mode autopilot these five changes, but don't merge. i'll land them in the morning.
 ```
 
-[Orchestrate](../../skills/poteto-mode/playbooks/orchestrate.md) is for a program that outlives any single agent: multi-day, many stacked PRs, fleets of delegate_task subagents under one standing coordinator chat. The coordinator decides which agent does each piece of work, checks what each one produces, and never writes code itself. If one agent could finish the work in a session, the playbook itself routes you back to the overnight contract above:
+A whole program, such as a migration across many packages, has no playbook of its own. `pstack:poteto-mode` routes large or cross-cutting work to [`pstack:figure-it-out`](../../skills/figure-it-out/SKILL.md), which designs one rigorous run for it:
 
 ```text
-load pstack:poteto-mode orchestrate the store migration. own it until every package is converted and merged. i'll check in twice a day.
+load pstack:poteto-mode migrate every package to the new store. own it until each one is converted and merged. i'll check in twice a day.
 ```
 
 **Pitfall:** a duration is not a finish condition. "work on this for 4 hours" gives the agent nothing to check, and you'll wake up to four hours of motion instead of a result. Give the loop a predicate that can pass or fail.
